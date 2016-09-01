@@ -45,5 +45,8 @@
   "homepage": "https://github.com/multiformats/js-multibase#readme",
   "dependencies": {
     "bs58": "^3.0.0"
-  }
+  },
+  "contributors": [
+    "David Dias <daviddias.p@gmail.com>"
+  ]
 }
