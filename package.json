@@ -1,0 +1,49 @@
+{
+  "name": "multibase",
+  "version": "0.0.0",
+  "description": "JavaScript implementation of the multibase specification",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "test:node": "aegir-test node",
+    "lint": "aegir-lint",
+    "test:browser": "aegir-test browser",
+    "build": "aegir-build",
+    "test": "aegir-test",
+    "release": "aegir-release",
+    "release-minor": "aegir-release --type minor",
+    "release-major": "aegir-release --type major",
+    "coverage": "aegir-coverage",
+    "coverage-publish": "aegir-coverage publish"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/multiformats/js-multibase.git"
+  },
+  "keywords": [
+    "IPFS",
+    "multiformats",
+    "multibase",
+    "encode",
+    "decode",
+    "formats"
+  ],
+  "devDependencies": {
+    "aegir": "^6.0.1",
+    "chai": "^3.5.0",
+    "pre-commit": "^1.1.3"
+  },
+  "author": "David Dias <daviddias@ipfs.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/multiformats/js-multibase/issues"
+  },
+  "homepage": "https://github.com/multiformats/js-multibase#readme",
+  "dependencies": {
+    "bs58": "^3.0.0"
+  }
+}
