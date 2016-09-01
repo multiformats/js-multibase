@@ -20,11 +20,6 @@
     "lint",
     "test"
   ],
-  "standard": {
-    "ignore": [
-      "dist"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/multiformats/js-multibase.git"

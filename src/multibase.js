@@ -8,6 +8,8 @@ exports.encode = encode
 exports.decode = decode
 exports.isEncoded = isEncoded
 
+const errNotSupported = new Error('Unsupported encoding')
+
 // returns a new buffer with the multibase varint+code`
 function multibase (nameOrCode, buf) {
   if (!buf) {
@@ -29,7 +31,8 @@ function encode (nameOrCode, buf) {
   switch (name) {
     case 'base58btc': {
       encode = (buf) => { return new Buffer(bs58.encode(buf)) }
-    }
+    } break
+    default: throw errNotSupported
   }
 
   return multibase(name, encode(buf))
@@ -56,7 +59,7 @@ function decode (bufOrString) {
     case 'z': {
       decode = (buf) => { return new Buffer(bs58.decode(buf.toString())) }
     } break
-    default: throw new Error('Unsupported encoding')
+    default: throw errNotSupported
   }
 
   return decode(bufOrString)
@@ -92,7 +95,8 @@ function validEncode (name, buf) {
     case 'base58btc': {
       decode = bs58.decode
       buf = buf.toString() // bs58 only operates in strings bs58 strings
-    }
+    } break
+    default: throw errNotSupported
   }
 
   decode(buf)
