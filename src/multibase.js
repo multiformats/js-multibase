@@ -33,9 +33,10 @@ function encode (nameOrCode, buf) {
 // receives a buffer or string encoded with multibase header
 // decodes it and returns an object with the decoded buffer
 // and the encoded type { base: <name>, data: <buffer> }
-// from @theobat : This is not what the multibase.spec.js test is waiting for.
+
+// from @theobat : This is not what the multibase.spec.js test is waiting for,
+// hence the return decodeObject.data
 function decode (bufOrString) {
-  console.log(bufOrString)
   if (Buffer.isBuffer(bufOrString)) {
     bufOrString = bufOrString.toString()
   }
