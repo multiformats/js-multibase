@@ -108,7 +108,7 @@ function getCode (nameOrCode) {
   let code = nameOrCode
 
   if (constants.names[nameOrCode]) {
-    code = constants.names[nameOrCode]
+    code = constants.names[nameOrCode].getCode()
   }
 
   return code
@@ -120,7 +120,7 @@ function getName (nameOrCode) {
   let name = nameOrCode
 
   if (constants.codes[nameOrCode]) {
-    name = constants.codes[nameOrCode]
+    name = constants.codes[nameOrCode].getName()
   }
 
   return name
