@@ -1,11 +1,13 @@
 'use strict'
 
 class Base {
-  constructor (name, code, alphabet) {
+  constructor (name, code, implementation, alphabet) {
     this.name = name
     this.code = code
     this.alphabet = alphabet
-    this.engine = require('base-x')(alphabet)
+    if (implementation && alphabet) {
+      this.engine = implementation(alphabet)
+    }
   }
 
   getName () {
@@ -25,9 +27,13 @@ class Base {
   }
 
   decode (stringOrBuffer) {
-    // This does not support padding ...
     return this.engine.decode(stringOrBuffer)
   }
+
+  isImplemented () {
+    return this.engine
+  }
+
 }
 
 module.exports = Base
