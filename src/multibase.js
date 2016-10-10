@@ -15,17 +15,16 @@ function multibase (nameOrCode, buf) {
     throw new Error('requires an encoded buffer')
   }
   const base = getBase(nameOrCode)
-  const code = base.getCode()
-  const codeBuf = new Buffer(code)
+  const codeBuf = new Buffer(base.code)
 
-  const name = base.getName()
+  const name = base.name
   validEncode(name, buf)
   return Buffer.concat([codeBuf, buf])
 }
 
 function encode (nameOrCode, buf) {
   const base = getBase(nameOrCode)
-  const name = base.getName()
+  const name = base.name
 
   return multibase(name, new Buffer(base.encode(buf)))
 }
@@ -51,7 +50,7 @@ function decode (bufOrString) {
   const base = getBase(code)
 
   const decodeObject = {
-    base: base.getName(),
+    base: base.name,
     data: new Buffer(base.decode(bufOrString.toString()))
   }
   return decodeObject.data
@@ -65,7 +64,7 @@ function isEncoded (bufOrString) {
   const code = bufOrString.substring(0, 1)
   try {
     const base = getBase(code)
-    return base.getName()
+    return base.name
   } catch (err) {
     return false
   }

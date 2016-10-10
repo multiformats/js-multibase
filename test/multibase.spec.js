@@ -57,33 +57,33 @@ describe('multibase', () => {
       it('adds multibase code to valid encoded buffer, by name', () => {
         const buf = new Buffer(input)
         const encodedBuf = new Buffer(base.encode(buf))
-        const multibasedBuf = multibase(base.getName(), encodedBuf)
+        const multibasedBuf = multibase(base.name, encodedBuf)
         expect(multibasedBuf.toString()).to.equal(output)
       })
 
       it('adds multibase code to valid encoded buffer, by code', () => {
         const buf = new Buffer(input)
         const encodedBuf = new Buffer(base.encode(buf))
-        const multibasedBuf = multibase(base.getCode(), encodedBuf)
+        const multibasedBuf = multibase(base.code, encodedBuf)
         expect(multibasedBuf.toString()).to.equal(output)
       })
 
       it('fails to add multibase code to invalid encoded buffer', () => {
         const nonEncodedBuf = new Buffer('^!@$%!#$%@#y')
         expect(() => {
-          multibase(base.getName(), nonEncodedBuf)
+          multibase(base.name, nonEncodedBuf)
         }).to.throw(Error)
       })
 
       it('isEncoded string', () => {
         const name = multibase.isEncoded(output)
-        expect(name).to.equal(base.getName())
+        expect(name).to.equal(base.name)
       })
 
       it('isEncoded buffer', () => {
         const multibasedStr = new Buffer(output)
         const name = multibase.isEncoded(multibasedStr)
-        expect(name).to.equal(base.getName())
+        expect(name).to.equal(base.name)
       })
     })
   }

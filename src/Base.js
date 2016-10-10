@@ -10,18 +10,6 @@ class Base {
     }
   }
 
-  getName () {
-    return this.name
-  }
-
-  getCode () {
-    return this.code
-  }
-
-  getAlphabet () {
-    return this.alphabet
-  }
-
   encode (stringOrBuffer) {
     return this.engine.encode(stringOrBuffer)
   }
