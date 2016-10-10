@@ -83,6 +83,58 @@ Loading this module through a script tag will make the ```Multibase``` obj avail
 
 You will need to use Node.js `Buffer` API compatible, if you are running inside the browser, you can access it by `multibase.Buffer` or you can load Feross's [Buffer](https://github.com/feross/buffer) module.
 
+## Adding additional bases
+
+If the base you are looking for is not supported yet in js-multibase and you know a good encoding/decoding algorithm, you can add support for this base easily by editing the constants.js file
+(**you'll need to create an issue about that beforehand since a code and a canonical name have to be defined**):
+
+```js
+const baseX = require('base-x')
+//const newPackage = require('your-package-name')
+
+const constants = [
+  ['base1', '1', '', '1'],
+  ['base2', '0', baseX, '01'],
+  ['base8', '7', baseX, '01234567'],
+  // ... [ 'your-base-name', 'code-to-be-defined', newPackage, 'alphabet']
+]
+```
+The required package defines the implementation of the encoding/decoding process. **It must comply by these rules** :
+- `encode` and `decode` functions with to-be-encoded buffer as the only expected argument
+- the require call use the `alphabet` given as an argument for the encoding/decoding process
+
+*If no package is specified (such as for base1 in the above example, it means the base is not implemented yet)*
+
+Adding a new base requires the tests to be updated. Test files to be updated are :
+- constants.spec.js
+```js
+describe('constants', () => {
+  it('constants indexed by name', () => {
+    const names = constants.names
+    expect(Object.keys(names).length).to.equal(constants-count) // currently 12
+  })
+
+  it('constants indexed by code', () => {
+    const codes = constants.codes
+    expect(Object.keys(codes).length).to.equal(constants-count)
+  })
+})
+```
+
+- multibase.spec.js
+    - if the base is implemented
+    ```js
+    const supportedBases = [
+      ['base2', 'yes mani !', '01111001011001010111001100100000011011010110000101101110011010010010000000100001'],
+      ['base8', 'yes mani !', '7171312714403326055632220041'],
+      ['base10', 'yes mani !', '9573277761329450583662625'],
+      // ... ['your-base-name', 'what you want', 'expected output']
+    ```
+    - if the base is not implemented yet
+    ```js
+    const supportedBases = [
+      // ... ['your-base-name']
+    ```
 
 ## License
 
