@@ -94,11 +94,13 @@ class Base {
   // ...
 }
 ```
-The ```implementation``` is an object where the encoding/decoding functions are implemented. It must take one argument, (the alphabet) following the base-x module architecture.
+The ```implementation``` is an object where the encoding/decoding functions are implemented. It must take one argument, (the alphabet) following the [base-x module](https://github.com/cryptocoinjs/base-x) architecture.
+
 The ```alphabet``` is the **ordered** set of defined symbols for a given base.
+
 The idea behind this is that several bases may have implementations from different locations/modules so it's useful to have an object (and a summary) of all of them in one location (hence the constants.js).
 
-All the supported bases are currently using the npm [base-x](https://github.com/cryptocoinjs/base-x) module as their implementation. It is using bitwise maipulation to go from one base to another, so this module does not support apdding at the moment.
+All the supported bases are currently using the npm [base-x](https://github.com/cryptocoinjs/base-x) module as their implementation. It is using bitwise maipulation to go from one base to another, so this module does not support padding at the moment.
 
 ## Adding additional bases
 
