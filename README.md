@@ -83,6 +83,23 @@ Loading this module through a script tag will make the ```Multibase``` obj avail
 
 You will need to use Node.js `Buffer` API compatible, if you are running inside the browser, you can access it by `multibase.Buffer` or you can load Feross's [Buffer](https://github.com/feross/buffer) module.
 
+## Architecture and Encoding/Decoding
+
+Multibase package defines all the supported bases and the location of their implementation in the constants.js file. A base is a class with a name, a code, an implementation and an alphabet.
+```js
+class Base {
+  constructor (name, code, implementation, alphabet) {
+    //...
+  }
+  // ...
+}
+```
+The ```implementation``` is an object where the encoding/decoding functions are implemented. It must take one argument, (the alphabet) following the base-x module architecture.
+The ```alphabet``` is the **ordered** set of defined symbols for a given base.
+The idea behind this is that several bases may have implementations from different locations/modules so it's useful to have an object (and a summary) of all of them in one location (hence the constants.js).
+
+All the supported bases are currently using the npm [base-x](https://github.com/cryptocoinjs/base-x) module as their implementation. It is using bitwise maipulation to go from one base to another, so this module does not support apdding at the moment.
+
 ## Adding additional bases
 
 If the base you are looking for is not supported yet in js-multibase and you know a good encoding/decoding algorithm, you can add support for this base easily by editing the constants.js file
