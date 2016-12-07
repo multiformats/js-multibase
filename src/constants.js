@@ -1,7 +1,8 @@
 'use strict'
 
-const Base = require('./Base.js')
+const Base = require('./base.js')
 const baseX = require('base-x')
+
 // name, code, implementation, alphabet
 const constants = [
   ['base1', '1', '', '1'],
