@@ -33,9 +33,9 @@
     "formats"
   ],
   "devDependencies": {
-    "aegir": "^9.2.2",
+    "aegir": "^9.3.0",
     "chai": "^3.5.0",
-    "pre-commit": "^1.2.1"
+    "pre-commit": "^1.2.2"
   },
   "author": "David Dias <daviddias@ipfs.io>",
   "license": "MIT",

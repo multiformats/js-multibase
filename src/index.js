@@ -117,11 +117,6 @@ function validEncode (name, buf) {
   base.decode(buf.toString())
 }
 
-/**
- * @param {string|number} nameOrCode
- * @returns {Base}
- * @private
- */
 function getBase (nameOrCode) {
   let base
 
