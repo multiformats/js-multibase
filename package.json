@@ -48,6 +48,9 @@
   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
+    "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
+    "Richard Littauer <richard.littauer@gmail.com>",
+    "npm-to-cdn-bot (by Forbes Lindesay) <npmcdn-to-unpkg-bot@users.noreply.github.com>",
     "theobat <theophile.batoz@gmail.com>"
   ]
 }
