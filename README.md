@@ -78,6 +78,7 @@ console.log(decodedBuf.toString())
 ```
 
 ## API
+https://multiformats.github.io/js-multibase/
 
 ### `multibase` - Prefixes an encoded buffer with its multibase code
 
