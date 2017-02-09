@@ -1,6 +1,6 @@
 {
   "name": "multibase",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "JavaScript implementation of the multibase specification",
   "main": "src/index.js",
   "scripts": {
