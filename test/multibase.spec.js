@@ -14,6 +14,8 @@ const supportedBases = [
   ['base8', 'yes mani !', '7171312714403326055632220041'],
   ['base10', 'yes mani !', '9573277761329450583662625'],
   ['base16', 'yes mani !', 'f796573206d616e692021'],
+  ['base16', new Buffer([0x01]), 'f01'],
+  ['base16', new Buffer([15]), 'f0f'],
   ['base32hex', 'yes mani !', 'vf5in683dc5n6i811'],
   ['base32', 'yes mani !', 'bpfsxgidnmfxgsibb'],
   ['base32z', 'yes mani !', 'hxf1zgedpcfzg1ebb'],
@@ -55,10 +57,16 @@ describe('multibase', () => {
     const base = constants.names[name]
     describe(name, () => {
       it('adds multibase code to valid encoded buffer, by name', () => {
-        const buf = new Buffer(input)
-        const encodedBuf = new Buffer(base.encode(buf))
-        const multibasedBuf = multibase(base.name, encodedBuf)
-        expect(multibasedBuf.toString()).to.equal(output)
+        if (typeof input === 'string') {
+          const buf = new Buffer(input)
+          const encodedBuf = new Buffer(base.encode(buf))
+          const multibasedBuf = multibase(base.name, encodedBuf)
+          expect(multibasedBuf.toString()).to.equal(output)
+        } else {
+          const encodedBuf = new Buffer(base.encode(input))
+          const multibasedBuf = multibase(base.name, encodedBuf)
+          expect(multibasedBuf.toString()).to.equal(output)
+        }
       })
 
       it('adds multibase code to valid encoded buffer, by code', () => {

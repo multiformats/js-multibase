@@ -2,6 +2,7 @@
 
 const Base = require('./base.js')
 const baseX = require('base-x')
+const base16 = require('./base16')
 
 // name, code, implementation, alphabet
 const constants = [
@@ -9,7 +10,7 @@ const constants = [
   ['base2', '0', baseX, '01'],
   ['base8', '7', baseX, '01234567'],
   ['base10', '9', baseX, '0123456789'],
-  ['base16', 'f', baseX, '0123456789abcdef'],
+  ['base16', 'f', base16, '0123456789abcdef'],
   ['base32hex', 'v', baseX, '0123456789abcdefghijklmnopqrstuv'],
   ['base32', 'b', baseX, 'abcdefghijklmnopqrstuvwxyz234567'],
   ['base32z', 'h', baseX, 'ybndrfg8ejkmcpqxot1uwisza345h769'],
