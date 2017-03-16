@@ -21,7 +21,6 @@ class Base {
   isImplemented () {
     return this.engine
   }
-
 }
 
 module.exports = Base
