@@ -17,8 +17,15 @@ const supportedBases = [
   ['base8', 'yes mani !', '7171312714403326055632220041'],
   ['base10', 'yes mani !', '9573277761329450583662625'],
   ['base16', 'yes mani !', 'f796573206d616e692021'],
+
   ['base16', new Buffer([0x01]), 'f01'],
   ['base16', new Buffer([15]), 'f0f'],
+  ['base16', 'f', 'f66'],
+  ['base16', 'fo', 'f666f'],
+  ['base16', 'foo', 'f666f6f'],
+  ['base16', 'foob', 'f666f6f62'],
+  ['base16', 'fooba', 'f666f6f6261'],
+  ['base16', 'foobar', 'f666f6f626172'],
 
   ['base32', 'yes mani !', 'bpfsxgidnmfxgsibb'],
   ['base32', 'f', 'bmy'],
