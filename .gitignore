@@ -30,6 +30,8 @@ build
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+yarn.lock
+package-lock.json
 
 dist
 docs
