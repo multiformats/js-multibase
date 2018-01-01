@@ -63,7 +63,7 @@ module.exports = function base32 (alphabet) {
   return {
     encode (input) {
       if (typeof input === 'string') {
-        return encode(new Buffer(input), alphabet)
+        return encode(Buffer.from(input), alphabet)
       }
 
       return encode(input, alphabet)

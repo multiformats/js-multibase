@@ -14,7 +14,7 @@ module.exports = function base64 (alphabet) {
       let output = ''
 
       if (typeof input === 'string') {
-        output = new Buffer(input).toString('base64')
+        output = Buffer.from(input).toString('base64')
       } else {
         output = input.toString('base64')
       }
@@ -43,7 +43,7 @@ module.exports = function base64 (alphabet) {
         }
       }
 
-      return new Buffer(input, 'base64')
+      return Buffer.from(input, 'base64')
     }
   }
 }

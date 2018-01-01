@@ -4,7 +4,7 @@ module.exports = function base16 (alphabet) {
   return {
     encode (input) {
       if (typeof input === 'string') {
-        return new Buffer(input).toString('hex')
+        return Buffer.from(input).toString('hex')
       }
       return input.toString('hex')
     },
@@ -14,7 +14,7 @@ module.exports = function base16 (alphabet) {
           throw new Error('invalid base16 character')
         }
       }
-      return new Buffer(input, 'hex')
+      return Buffer.from(input, 'hex')
     }
   }
 }
