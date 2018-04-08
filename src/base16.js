@@ -1,6 +1,7 @@
-'use strict'
+// @flow
+import type { BaseEngine } from './base'
 
-module.exports = function base16 (alphabet) {
+export function base16 (alphabet: string): BaseEngine {
   return {
     encode (input) {
       if (typeof input === 'string') {

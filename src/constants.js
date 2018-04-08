@@ -1,13 +1,22 @@
-'use strict'
+// @flow
 
-const Base = require('./base.js')
-const baseX = require('base-x')
-const base16 = require('./base16')
-const base32 = require('./base32')
-const base64 = require('./base64')
+// TODO: These typings don't seem to get loaded
+import baseX from 'base-x'
+import { Base } from './base'
+import { base16 } from './base16'
+import { base32 } from './base32'
+import { base64 } from './base64'
+
+import type { BaseImplementation } from './base'
+
+// TODO: Should we change those to union types?
+type BaseName = string
+type BaseCode = string;
+type BaseAlphabet = string
+type BaseData = [BaseName, BaseCode, BaseImplementation | '', BaseAlphabet]
 
 // name, code, implementation, alphabet
-const constants = [
+const baseDataSet: BaseData[] = [
   ['base1', '1', '', '1'],
   ['base2', '0', baseX, '01'],
   ['base8', '7', baseX, '01234567'],
@@ -26,17 +35,17 @@ const constants = [
   ['base64urlpad', 'U', base64, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_=']
 ]
 
-const names = constants.reduce((prev, tupple) => {
+const names: { [name: BaseName]: Base } = baseDataSet.reduce((prev, tupple) => {
   prev[tupple[0]] = new Base(tupple[0], tupple[1], tupple[2], tupple[3])
   return prev
 }, {})
 
-const codes = constants.reduce((prev, tupple) => {
+const codes: { [name: BaseCode]: Base } = baseDataSet.reduce((prev, tupple) => {
   prev[tupple[1]] = names[tupple[0]]
   return prev
 }, {})
 
-module.exports = {
+export const constants = {
   names: names,
   codes: codes
 }

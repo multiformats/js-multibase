@@ -1,15 +1,14 @@
+// @flow
+
 /**
  * Implementation of the [multibase](https://github.com/multiformats/multibase) specification.
  * @module Multibase
  */
-'use strict'
+import { constants } from './constants'
 
-const constants = require('./constants')
-
-exports = module.exports = multibase
-exports.encode = encode
-exports.decode = decode
-exports.isEncoded = isEncoded
+multibase.encode = encode
+multibase.decode = decode
+multibase.isEncoded = isEncoded
 
 const errNotSupported = new Error('Unsupported encoding')
 
@@ -21,7 +20,10 @@ const errNotSupported = new Error('Unsupported encoding')
  * @memberof Multibase
  * @returns {Buffer}
  */
-function multibase (nameOrCode, buf) {
+export default function multibase (
+  nameOrCode: string | number,
+  buf: Buffer
+): Buffer {
   if (!buf) {
     throw new Error('requires an encoded buffer')
   }
@@ -41,7 +43,7 @@ function multibase (nameOrCode, buf) {
  * @returns {Buffer}
  * @memberof Multibase
  */
-function encode (nameOrCode, buf) {
+function encode (nameOrCode: string | number, buf: Buffer): Buffer {
   const base = getBase(nameOrCode)
   const name = base.name
 
@@ -51,51 +53,35 @@ function encode (nameOrCode, buf) {
 /**
  *
  * Takes a buffer or string encoded with multibase header
- * decodes it and returns an object with the decoded buffer
- * and the encoded type { base: <name>, data: <buffer> }
- *
- * from @theobat : This is not what the multibase.spec.js test is waiting for,
- * hence the return decodeObject.data
+ * decodes it and returns the decoded buffer
  *
  * @param {Buffer|string} bufOrString
- * @returns {Object} result
- * @returns {string} result.base
- * @returns {Buffer} result.data
+ * @returns {Buffer}
  * @memberof Multibase
  *
  */
-function decode (bufOrString) {
-  if (Buffer.isBuffer(bufOrString)) {
-    bufOrString = bufOrString.toString()
-  }
+function decode (bufOrString: Buffer | string): Buffer {
+  bufOrString = bufOrString.toString()
 
   const code = bufOrString.substring(0, 1)
   bufOrString = bufOrString.substring(1, bufOrString.length)
 
-  if (typeof bufOrString === 'string') {
-    bufOrString = Buffer.from(bufOrString)
-  }
+  bufOrString = Buffer.from(bufOrString)
 
   const base = getBase(code)
 
-  const decodeObject = {
-    base: base.name,
-    data: Buffer.from(base.decode(bufOrString.toString()))
-  }
-  return decodeObject.data
+  return Buffer.from(base.decode(bufOrString.toString()))
 }
 
 /**
  * Is the given data multibase encoded?
  *
  * @param {Buffer|string} bufOrString
- * @returns {boolean}
+ * @returns {string|false} The code number or false.
  * @memberof Multibase
  */
-function isEncoded (bufOrString) {
-  if (Buffer.isBuffer(bufOrString)) {
-    bufOrString = bufOrString.toString()
-  }
+function isEncoded (bufOrString: Buffer | string): string | false {
+  bufOrString = bufOrString.toString()
 
   const code = bufOrString.substring(0, 1)
   try {
@@ -112,7 +98,7 @@ function isEncoded (bufOrString) {
  * @private
  * @returns {undefined}
  */
-function validEncode (name, buf) {
+function validEncode (name: string, buf: Buffer): void {
   const base = getBase(name)
   base.decode(buf.toString())
 }
@@ -120,10 +106,10 @@ function validEncode (name, buf) {
 function getBase (nameOrCode) {
   let base
 
-  if (constants.names[nameOrCode]) {
-    base = constants.names[nameOrCode]
-  } else if (constants.codes[nameOrCode]) {
-    base = constants.codes[nameOrCode]
+  if (constants.names[String(nameOrCode)]) {
+    base = constants.names[String(nameOrCode)]
+  } else if (constants.codes[String(nameOrCode)]) {
+    base = constants.codes[String(nameOrCode)]
   } else {
     throw errNotSupported
   }

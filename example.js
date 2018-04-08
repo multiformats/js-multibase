@@ -1,3 +1,4 @@
+/* eslint-disable strict */ /* eslint-disable no-console */
 'use strict'
 
 const multibase = require('multibase')

@@ -1,6 +1,7 @@
-'use strict'
+// @flow
+import type { BaseEngine } from './base'
 
-module.exports = function base64 (alphabet) {
+export function base64 (alphabet: string): BaseEngine {
   // The alphabet is only used to know:
   //   1. If padding is enabled (must contain '=')
   //   2. If the output must be url-safe (must contain '-' and '_')

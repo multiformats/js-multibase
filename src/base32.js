@@ -1,5 +1,8 @@
-'use strict'
+// @flow
+import type { BaseEngine } from './base'
 
+// TODO: This returns an ArrayBuffer we probably have to convert it to a node
+// buffer. Or is this correct and should be casted?
 function decode (input, alphabet) {
   input = input.replace(new RegExp('=', 'g'), '')
   let length = input.length
@@ -59,7 +62,7 @@ function encode (buffer, alphabet) {
   return output
 }
 
-module.exports = function base32 (alphabet) {
+export function base32 (alphabet: string): BaseEngine {
   return {
     encode (input) {
       if (typeof input === 'string') {
