@@ -34,4 +34,5 @@ yarn.lock
 package-lock.json
 
 dist
+lib
 docs

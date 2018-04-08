@@ -4,17 +4,22 @@
   "description": "JavaScript implementation of the multibase specification",
   "main": "src/index.js",
   "scripts": {
-    "lint": "aegir lint",
-    "test": "aegir test",
-    "test:node": "aegir test -t node",
-    "test:browser": "aegir test -t browser",
-    "build": "aegir build",
+    "lint": "aegir lint && npm run type-check",
+    "test": "npm run build:node && aegir test",
+    "test:node": "npm run build:node && aegir test --target node",
+    "test:browser": "npm run build && aegir test --target browser",
+    "type-check": "flow check",
+    "build": "npm run build:node && BABEL_ENV=umd aegir build",
     "docs": "aegir docs",
     "release": "aegir release --docs",
     "release-minor": "aegir release --type minor --docs",
     "release-major": "aegir release --type major --docs",
     "coverage": "aegir coverage",
-    "coverage-publish": "aegir coverage publish"
+    "coverage-publish": "aegir coverage publish",
+    "build:types": "flow-copy-source --verbose src lib",
+    "build:lib": "babel --out-dir lib src",
+    "build:node": "npm run build:types && npm run build:lib",
+    "start": "flow-copy-source --watch --verbose src lib & babel --watch --out-dir lib src"
   },
   "pre-commit": [
     "lint",
@@ -33,9 +38,15 @@
     "formats"
   ],
   "devDependencies": {
-    "aegir": "^12.3.0",
+    "aegir": "ipfs/aegir#flow",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-flow-node": "^2.0.1",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
+    "flow-bin": "^0.69.0",
+    "flow-copy-source": "^1.3.0",
     "pre-commit": "^1.2.2"
   },
   "dependencies": {
