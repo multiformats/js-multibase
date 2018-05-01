@@ -38,7 +38,6 @@
   "dependencies": {
     "base-x": "3.0.4"
   },
-  "author": "David Dias <daviddias@ipfs.io>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/multiformats/js-multibase/issues"
