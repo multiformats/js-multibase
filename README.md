@@ -183,10 +183,6 @@ describe('constants', () => {
       // ... ['your-base-name']
     ```
 
-## Maintainers
-
-Captain: [@diasdavid](https://github.com/diasdavid)
-
 ## Contribute
 
 Contributions welcome. Please check out [the issues](https://github.com/multiformats/js-multibase/issues).
