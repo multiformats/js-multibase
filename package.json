@@ -2,6 +2,7 @@
   "name": "multibase",
   "version": "0.4.0",
   "description": "JavaScript implementation of the multibase specification",
+  "lead-maintainer": "Oli Evans <oli@tableflip.io>",
   "main": "src/index.js",
   "scripts": {
     "lint": "aegir lint",
@@ -33,7 +34,7 @@
     "formats"
   ],
   "devDependencies": {
-    "aegir": "^12.3.0",
+    "aegir": "^13.1.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
     "pre-commit": "^1.2.2"

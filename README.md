@@ -13,6 +13,10 @@ js-multibase
 
 > JavaScript implementation of the [multibase](https://github.com/multiformats/multibase) specification
 
+## Lead Maintainer
+
+[Oli Evans](https://github.com/olizilla)
+
 ## Table of Contents
 
 - [Install](#install)
