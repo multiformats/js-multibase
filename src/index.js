@@ -89,7 +89,7 @@ function decode (bufOrString) {
  * Is the given data multibase encoded?
  *
  * @param {Buffer|string} bufOrString
- * @returns {boolean}
+ * @returns {boolean|string}
  * @memberof Multibase
  */
 function isEncoded (bufOrString) {
