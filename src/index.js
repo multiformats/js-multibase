@@ -58,9 +58,7 @@ function encode (nameOrCode, buf) {
  * hence the return decodeObject.data
  *
  * @param {Buffer|string} bufOrString
- * @returns {Object} result
- * @returns {string} result.base
- * @returns {Buffer} result.data
+ * @returns {Buffer}
  * @memberof Multibase
  *
  */
