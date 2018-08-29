@@ -206,3 +206,27 @@ for (const elements of unsupportedBases) {
     })
   })
 }
+
+describe('multibase.names', () => {
+  it('includes all base names', () => {
+    Object.keys(constants.names).forEach(name => {
+      expect(multibase.names).to.include(name)
+    })
+  })
+
+  it('base names are frozen', () => {
+    expect(Object.isFrozen(multibase.names)).to.be.true()
+  })
+})
+
+describe('multibase.codes', () => {
+  it('includes all base codes', () => {
+    Object.keys(constants.codes).forEach(code => {
+      expect(multibase.codes).to.include(code)
+    })
+  })
+
+  it('base codes are frozen', () => {
+    expect(Object.isFrozen(multibase.codes)).to.be.true()
+  })
+})
