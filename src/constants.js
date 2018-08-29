@@ -37,6 +37,6 @@ const codes = constants.reduce((prev, tupple) => {
 }, {})
 
 module.exports = {
-  names: names,
-  codes: codes
+  names: Object.freeze(names),
+  codes: Object.freeze(codes)
 }

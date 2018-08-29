@@ -10,6 +10,8 @@ exports = module.exports = multibase
 exports.encode = encode
 exports.decode = decode
 exports.isEncoded = isEncoded
+exports.names = constants.names
+exports.codes = constants.codes
 
 const errNotSupported = new Error('Unsupported encoding')
 

@@ -17,4 +17,14 @@ describe('constants', () => {
     const codes = constants.codes
     expect(Object.keys(codes).length).to.equal(16)
   })
+
+  it('names frozen', () => {
+    const names = constants.names
+    expect(Object.isFrozen(names)).to.be.true()
+  })
+
+  it('codes frozen', () => {
+    const codes = constants.codes
+    expect(Object.isFrozen(codes)).to.be.true()
+  })
 })
