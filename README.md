@@ -31,6 +31,8 @@ js-multibase
   - [`multibase.encode` - Encodes a buffer into one of the supported encodings, prefixing it with the multibase code](#multibaseencode---encodes-a-buffer-into-one-of-the-supported-encodings-prefixing-it-with-the-multibase-code)
   - [`multibase.decode` - Decodes a buffer or string](#multibasedecode---decodes-a-buffer-or-string)
   - [`multibase.isEncoded` - Checks if buffer or string is encoded](#multibaseisencoded---checks-if-buffer-or-string-is-encoded)
+  - [`multibase.names` - Supported base encoding names](#multibasenames)
+  - [`multibase.codes` - Supported base encoding codes](#multibasecodes)
   - [Supported Encodings, see `src/constants.js`](#supported-encodings-see-srcconstantsjs)
 - [Architecture and Encoding/Decoding](#architecture-and-encodingdecoding)
 - [Adding additional bases](#adding-additional-bases)
@@ -108,6 +110,14 @@ const decodedBuf = multibase.decoded(bufOrString)
 const value = multibase.isEncoded(bufOrString)
 // value is the name of the encoding if it is encoded, false otherwise
 ```
+
+### `multibase.names`
+
+A frozen `Array` of supported base encoding names.
+
+### `multibase.codes`
+
+A frozen `Array` of supported base encoding codes.
 
 ### Supported Encodings, see [`src/constants.js`](/src/constants.js)
 
