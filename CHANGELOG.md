@@ -1,3 +1,13 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/multiformats/js-multibase/compare/v0.4.0...v0.5.0) (2018-08-30)
+
+
+### Features
+
+* export list of multibase names and codes ([#31](https://github.com/multiformats/js-multibase/issues/31)) ([c9e221c](https://github.com/multiformats/js-multibase/commit/c9e221c))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/multiformats/js-multibase/compare/v0.3.4...v0.4.0) (2018-01-01)
 
