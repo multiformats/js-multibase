@@ -4,12 +4,11 @@ js-multibase
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io)
 [![](https://img.shields.io/badge/project-multiformats-blue.svg?style=flat-square)](https://github.com/multiformats/multiformats)
 [![](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](https://webchat.freenode.net/?channels=%23ipfs)
-[![Coverage Status](https://coveralls.io/repos/github/multiformats/js-multibase/badge.svg?branch=master)](https://coveralls.io/github/multiformats/js-multibase?branch=master)
-[![Travis CI](https://img.shields.io/travis/multiformats/js-multibase.svg?style=flat-square&branch=master)](https://travis-ci.org/multiformats/js-multibase)
-[![Circle CI](https://circleci.com/gh/multiformats/js-multibase.svg?style=svg)](https://circleci.com/gh/multiformats/js-multibase)
 [![Dependency Status](https://david-dm.org/multiformats/js-multibase.svg?style=flat-square)](https://david-dm.org/multiformats/js-multibase)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 [![](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![Build Status](https://img.shields.io/jenkins/s/https/ci.ipfs.team/job/multiformats/job/js-multibase/job/master.svg?style=flat-square)](https://ci.ipfs.team/job/multiformats/job/js-multibase/job/master)
+[![codecov](https://img.shields.io/codecov/c/github/multiformats/js-multibase.svg?style=flat-square)](https://codecov.io/gh/multiformats/js-multibase)
 
 > JavaScript implementation of the [multibase](https://github.com/multiformats/multibase) specification
 
