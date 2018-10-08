@@ -20,8 +20,8 @@ module.exports = function base64 (alphabet) {
       }
 
       if (url) {
-        output = output.replace('+', '-')
-        output = output.replace('/', '_')
+        output = output.replace(/\+/g, '-')
+        output = output.replace(/\//g, '_')
       }
 
       const pad = output.indexOf('=')
@@ -33,12 +33,13 @@ module.exports = function base64 (alphabet) {
     },
     decode (input) {
       if (url) {
-        input = input.replace('+', '-')
-        input = input.replace('/', '_')
+        input = input.replace(/\+/g, '-')
+        input = input.replace(/\//g, '_')
       }
 
       for (let char of input) {
         if (alphabet.indexOf(char) < 0) {
+          console.error({char, input});
           throw new Error('invalid base64 character')
         }
       }
