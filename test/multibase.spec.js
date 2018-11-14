@@ -230,3 +230,24 @@ describe('multibase.codes', () => {
     expect(Object.isFrozen(multibase.codes)).to.be.true()
   })
 })
+
+describe('multibase.isEncoded', () => {
+  it('should not throw for non string/buffer input', () => {
+    const invalidInputs = [
+      null,
+      undefined,
+      false,
+      0,
+      {},
+      [],
+      /[a-z]/,
+      () => {},
+      Symbol('test')
+    ]
+
+    invalidInputs.forEach(input => {
+      expect(() => multibase.isEncoded(input)).to.not.throw()
+      expect(multibase.isEncoded(input)).to.be.false()
+    })
+  })
+})

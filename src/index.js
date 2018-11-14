@@ -99,6 +99,11 @@ function isEncoded (bufOrString) {
     bufOrString = bufOrString.toString()
   }
 
+  // Ensure bufOrString is a string
+  if (Object.prototype.toString.call(bufOrString) !== '[object String]') {
+    return false
+  }
+
   const code = bufOrString.substring(0, 1)
   try {
     const base = getBase(code)
