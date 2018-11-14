@@ -100,7 +100,7 @@ const encodedBuf = multibase.encode(<nameOrCode>, <buf>)
 ### `multibase.decode` - Decodes a buffer or string
 
 ```JavaScript
-const decodedBuf = multibase.decoded(bufOrString)
+const decodedBuf = multibase.decode(bufOrString)
 ```
 
 ### `multibase.isEncoded` - Checks if buffer or string is encoded
