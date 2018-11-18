@@ -89,7 +89,7 @@ function decode (bufOrString) {
  * Is the given data multibase encoded?
  *
  * @param {Buffer|string} bufOrString
- * @returns {boolean|string}
+ * @returns {boolean}
  * @memberof Multibase
  */
 function isEncoded (bufOrString) {
@@ -100,7 +100,7 @@ function isEncoded (bufOrString) {
   const code = bufOrString.substring(0, 1)
   try {
     const base = getBase(code)
-    return base.name
+    return Boolean(base.name)
   } catch (err) {
     return false
   }
