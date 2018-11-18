@@ -39,7 +39,6 @@ module.exports = function base64 (alphabet) {
 
       for (let char of input) {
         if (alphabet.indexOf(char) < 0) {
-          console.error({char, input});
           throw new Error('invalid base64 character')
         }
       }
