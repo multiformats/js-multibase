@@ -70,6 +70,7 @@ const supportedBases = [
   ['base64', 'foob', 'mZm9vYg'],
   ['base64', 'fooba', 'mZm9vYmE'],
   ['base64', 'foobar', 'mZm9vYmFy'],
+  ['base64', '÷ïÿ🥰÷ïÿ😎🥶🤯', 'mw7fDr8O/8J+lsMO3w6/Dv/CfmI7wn6W28J+krw'],
 
   ['base64pad', 'f', 'MZg=='],
   ['base64pad', 'fo', 'MZm8='],
@@ -79,13 +80,15 @@ const supportedBases = [
   ['base64pad', 'foobar', 'MZm9vYmFy'],
 
   ['base64url', '÷ïÿ', 'uw7fDr8O_'],
+  ['base64url', '÷ïÿ🥰÷ïÿ😎🥶🤯', 'uw7fDr8O_8J-lsMO3w6_Dv_CfmI7wn6W28J-krw'],
 
   ['base64urlpad', 'f', 'UZg=='],
   ['base64urlpad', 'fo', 'UZm8='],
   ['base64urlpad', 'foo', 'UZm9v'],
   ['base64urlpad', 'foob', 'UZm9vYg=='],
   ['base64urlpad', 'fooba', 'UZm9vYmE='],
-  ['base64urlpad', 'foobar', 'UZm9vYmFy']
+  ['base64urlpad', 'foobar', 'UZm9vYmFy'],
+  ['base64urlpad', '÷ïÿ🥰÷ïÿ😎🥶🤯', 'Uw7fDr8O_8J-lsMO3w6_Dv_CfmI7wn6W28J-krw==']
 ]
 
 describe('multibase', () => {
