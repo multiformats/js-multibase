@@ -51,18 +51,11 @@ function encode (nameOrCode, buf) {
 }
 
 /**
- *
- * Takes a buffer or string encoded with multibase header
- * decodes it and returns an object with the decoded buffer
- * and the encoded type { base: <name>, data: <buffer> }
- *
- * from @theobat : This is not what the multibase.spec.js test is waiting for,
- * hence the return decodeObject.data
+ * Takes a buffer or string encoded with multibase header, decodes it and
+ * returns the decoded buffer
  *
  * @param {Buffer|string} bufOrString
- * @returns {Object} result
- * @returns {string} result.base
- * @returns {Buffer} result.data
+ * @returns {Buffer}
  * @memberof Multibase
  *
  */
@@ -79,12 +72,7 @@ function decode (bufOrString) {
   }
 
   const base = getBase(code)
-
-  const decodeObject = {
-    base: base.name,
-    data: Buffer.from(base.decode(bufOrString.toString()))
-  }
-  return decodeObject.data
+  return Buffer.from(base.decode(bufOrString.toString()))
 }
 
 /**
