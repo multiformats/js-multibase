@@ -1,6 +1,6 @@
 {
   "name": "multibase",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "JavaScript implementation of the multibase specification",
   "leadMaintainer": "Oli Evans <oli@tableflip.io>",
   "main": "src/index.js",
@@ -44,6 +44,7 @@
   },
   "homepage": "https://github.com/multiformats/js-multibase#readme",
   "contributors": [
+    "Alan Shaw <alan.shaw@protocol.ai>",
     "Alan Shaw <alan@tableflip.io>",
     "David Dias <daviddias.p@gmail.com>",
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
@@ -54,6 +55,6 @@
     "greenkeeper[bot] <greenkeeper[bot]@users.noreply.github.com>",
     "npm-to-cdn-bot (by Forbes Lindesay) <npmcdn-to-unpkg-bot@users.noreply.github.com>",
     "theobat <theophile.batoz@gmail.com>",
-    "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ <victorbjelkholm@gmail.com>"
+    "victorbjelkholm <victorbjelkholm@gmail.com>"
   ]
 }
