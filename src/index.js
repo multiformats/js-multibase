@@ -12,6 +12,7 @@ exports.decode = decode
 exports.isEncoded = isEncoded
 exports.names = Object.freeze(Object.keys(constants.names))
 exports.codes = Object.freeze(Object.keys(constants.codes))
+exports.Buffer = Buffer;
 
 const errNotSupported = new Error('Unsupported encoding')
 
