@@ -11,8 +11,8 @@ const baseXOri = baseX
 baseX = function (ALPHABET) {
   let impl = baseXOri(ALPHABET)
   let encodeOri = impl.encode.bind(impl)
-  impl.encode = function encode(source) {
-    if (typeof source === "string") {
+  impl.encode = function encode (source) {
+    if (typeof source === 'string') {
       source = Buffer.from(source)
     }
     return encodeOri(source)
