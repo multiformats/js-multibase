@@ -7,18 +7,18 @@ const base32 = require('./base32')
 const base64 = require('./base64')
 
 // to support string encoding
-const baseXOri = baseX;
+const baseXOri = baseX
 baseX = function (ALPHABET) {
-  let impl = baseXOri(ALPHABET);
-  let encodeOri = impl.encode.bind(impl);
+  let impl = baseXOri(ALPHABET)
+  let encodeOri = impl.encode.bind(impl)
   impl.encode = function encode(source) {
     if (typeof source === "string") {
-      source = Buffer.from(source);
+      source = Buffer.from(source)
     }
-    return encodeOri(source);
-  };
-  return impl;
-};
+    return encodeOri(source)
+  }
+  return impl
+}
 
 // name, code, implementation, alphabet
 const constants = [
