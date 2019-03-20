@@ -169,6 +169,10 @@ describe('multibase.encode ', () => {
     const input = elements[1]
     const output = elements[2]
     describe(name, () => {
+      it('encodes a string', () => {
+        const multibasedBuf = multibase.encode(name, input)
+        expect(multibasedBuf.toString()).to.equal(output)
+      })
       it('encodes a buffer', () => {
         const buf = Buffer.from(input)
         const multibasedBuf = multibase.encode(name, buf)

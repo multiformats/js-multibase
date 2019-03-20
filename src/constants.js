@@ -1,10 +1,24 @@
 'use strict'
 
 const Base = require('./base.js')
-const baseX = require('base-x')
+let baseX = require('base-x')
 const base16 = require('./base16')
 const base32 = require('./base32')
 const base64 = require('./base64')
+
+// to support string encoding
+const baseXOri = baseX;
+baseX = function (ALPHABET) {
+  let impl = baseXOri(ALPHABET);
+  let encodeOri = impl.encode.bind(impl);
+  impl.encode = function encode(source) {
+    if (typeof source === "string") {
+      source = Buffer.from(source);
+    }
+    return encodeOri(source);
+  };
+  return impl;
+};
 
 // name, code, implementation, alphabet
 const constants = [
