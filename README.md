@@ -77,7 +77,7 @@ const encodedBuf = multibase.encode('base58btc', new Buffer('hey, how is it goin
 
 const decodedBuf = multibase.decode(encodedBuf)
 console.log(decodedBuf.toString())
-// hey, how it going
+// hey, how is it going
 ```
 
 ## API
