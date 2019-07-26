@@ -149,7 +149,6 @@ const baseX = require('base-x')
 //const newPackage = require('your-package-name')
 
 const constants = [
-  ['base1', '1', '', '1'],
   ['base2', '0', baseX, '01'],
   ['base8', '7', baseX, '01234567'],
   // ... [ 'your-base-name', 'code-to-be-defined', newPackage, 'alphabet']
@@ -159,7 +158,7 @@ The required package defines the implementation of the encoding/decoding process
 - `encode` and `decode` functions with to-be-encoded buffer as the only expected argument
 - the require call use the `alphabet` given as an argument for the encoding/decoding process
 
-*If no package is specified (such as for base1 in the above example, it means the base is not implemented yet)*
+*If no package is specified, it means the base is not implemented yet*
 
 Adding a new base requires the tests to be updated. Test files to be updated are :
 - constants.spec.js

@@ -8,9 +8,7 @@ chai.use(dirtyChai)
 const multibase = require('../src')
 const constants = require('../src/constants.js')
 
-const unsupportedBases = [
-  ['base1']
-]
+const unsupportedBases = []
 
 const supportedBases = [
   ['base2', 'yes mani !', '01111001011001010111001100100000011011010110000101101110011010010010000000100001'],
@@ -96,7 +94,7 @@ describe('multibase', () => {
 
     it('fails on no buf', () => {
       expect(() => {
-        multibase('base1')
+        multibase('base16')
       }).to.throw(Error)
     })
 

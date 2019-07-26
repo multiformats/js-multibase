@@ -8,7 +8,6 @@ const base64 = require('./base64')
 
 // name, code, implementation, alphabet
 const constants = [
-  ['base1', '1', '', '1'],
   ['base2', '0', baseX, '01'],
   ['base8', '7', baseX, '01234567'],
   ['base10', '9', baseX, '0123456789'],
