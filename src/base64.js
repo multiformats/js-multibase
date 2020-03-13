@@ -1,4 +1,5 @@
 'use strict'
+const { Buffer } = require('buffer')
 
 module.exports = function base64 (alphabet) {
   // The alphabet is only used to know:
@@ -31,7 +32,7 @@ module.exports = function base64 (alphabet) {
       return output
     },
     decode (input) {
-      for (let char of input) {
+      for (const char of input) {
         if (alphabet.indexOf(char) < 0) {
           throw new Error('invalid base64 character')
         }
