@@ -1,6 +1,6 @@
 {
   "name": "multibase",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "JavaScript implementation of the multibase specification",
   "leadMaintainer": "Oli Evans <oli@tableflip.io>",
   "main": "src/index.js",
@@ -51,13 +51,14 @@
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
     "Oli Evans <oli@tableflip.io>",
+    "Hugo Dias <hugomrdias@gmail.com>",
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
     "Alan Shaw <alan.shaw@protocol.ai>",
-    "Hugo Dias <hugomrdias@gmail.com>",
-    "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ <victorbjelkholm@gmail.com>",
-    "Richard Littauer <richard.littauer@gmail.com>",
+    "victorbjelkholm <victorbjelkholm@gmail.com>",
+    "achingbrain <alex@achingbrain.net>",
     "theobat <theophile.batoz@gmail.com>",
+    "Bora M. Alper <boramalper@gmail.com>",
     "Henrique Dias <hacdias@gmail.com>",
-    "Bora M. Alper <boramalper@gmail.com>"
+    "Richard Littauer <richard.littauer@gmail.com>"
   ]
 }
