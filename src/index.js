@@ -14,8 +14,6 @@ exports.isEncoded = isEncoded
 exports.names = Object.freeze(Object.keys(constants.names))
 exports.codes = Object.freeze(Object.keys(constants.codes))
 
-const errNotSupported = new Error('Unsupported encoding')
-
 /**
  * Create a new buffer with the multibase varint+code.
  *
@@ -121,7 +119,7 @@ function getBase (nameOrCode) {
   } else if (constants.codes[nameOrCode]) {
     base = constants.codes[nameOrCode]
   } else {
-    throw errNotSupported
+    throw new Error('Unsupported encoding')
   }
 
   if (!base.isImplemented()) {
