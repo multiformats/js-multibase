@@ -1,3 +1,18 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/multiformats/js-multibase/compare/v0.6.1...v0.7.0) (2020-03-16)
+
+
+### Bug Fixes
+
+* throw new error object so stack traces are valid ([db415c9](https://github.com/multiformats/js-multibase/commit/db415c9))
+
+
+### Features
+
+* remove base1 and readme tweaks ([05cd102](https://github.com/multiformats/js-multibase/commit/05cd102)), closes [#48](https://github.com/multiformats/js-multibase/issues/48) [#44](https://github.com/multiformats/js-multibase/issues/44)
+
+
+
 <a name="0.6.1"></a>
 ## [0.6.1](https://github.com/multiformats/js-multibase/compare/v0.6.0...v0.6.1) (2020-03-16)
 
