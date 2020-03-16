@@ -17,6 +17,10 @@
     "coverage": "aegir coverage",
     "coverage-publish": "aegir coverage publish"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/multiformats/js-multibase.git"
@@ -30,13 +34,14 @@
     "formats"
   ],
   "devDependencies": {
-    "aegir": "^18.1.1",
+    "aegir": "^21.3.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
     "pre-commit": "^1.2.2"
   },
   "dependencies": {
-    "base-x": "3.0.4"
+    "base-x": "^3.0.8",
+    "buffer": "^5.5.0"
   },
   "license": "MIT",
   "bugs": {

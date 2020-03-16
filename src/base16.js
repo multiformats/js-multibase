@@ -1,4 +1,5 @@
 'use strict'
+const { Buffer } = require('buffer')
 
 module.exports = function base16 (alphabet) {
   return {
@@ -9,7 +10,7 @@ module.exports = function base16 (alphabet) {
       return input.toString('hex')
     },
     decode (input) {
-      for (let char of input) {
+      for (const char of input) {
         if (alphabet.indexOf(char) < 0) {
           throw new Error('invalid base16 character')
         }

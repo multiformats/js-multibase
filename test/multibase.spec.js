@@ -176,6 +176,14 @@ describe('multibase.encode ', () => {
       })
     })
   }
+
+  it('should allow base32pad full alphabet', () => {
+    const encodedStr = 'ctimaq4ygg2iegci7'
+    const decoded = multibase.decode(encodedStr)
+
+    const encoded = multibase.encode('c', decoded)
+    expect(encodedStr).to.be.eq(encoded.toString())
+  })
 })
 
 describe('multibase.decode', () => {
