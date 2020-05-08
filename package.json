@@ -34,7 +34,7 @@
     "formats"
   ],
   "devDependencies": {
-    "aegir": "^21.3.0",
+    "aegir": "^22.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
     "pre-commit": "^1.2.2"
