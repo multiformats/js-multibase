@@ -43,6 +43,12 @@ js-multibase
 > npm install --save multibase
 ```
 
+The type definitions for this package are available on http://definitelytyped.org/. To install just use:
+
+```sh
+$ npm install -D @types/multibase
+```
+
 ### Browser: Browserify, Webpack, other bundlers
 
 The code published to npm that gets loaded on require is in fact an ES5 transpiled version with the right shims added. This means that you can require it and use with your favourite bundler without having to adjust asset management process.
