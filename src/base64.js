@@ -1,7 +1,7 @@
 'use strict'
 const { Buffer } = require('buffer')
 
-module.exports = function base64 (alphabet) {
+const base64 = (alphabet) => {
   // The alphabet is only used to know:
   //   1. If padding is enabled (must contain '=')
   //   2. If the output must be url-safe (must contain '-' and '_')
@@ -42,3 +42,5 @@ module.exports = function base64 (alphabet) {
     }
   }
 }
+
+module.exports = base64

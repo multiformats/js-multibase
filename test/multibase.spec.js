@@ -10,6 +10,11 @@ const constants = require('../src/constants.js')
 
 const unsupportedBases = []
 
+/** @typedef {import("./../src/types").BaseNames} BaseNames */
+
+/**
+ * @type {Array<[BaseNames, string|Buffer, string]>}
+ */
 const supportedBases = [
   ['base2', 'yes mani !', '01111001011001010111001100100000011011010110000101101110011010010010000000100001'],
   ['base8', 'yes mani !', '7171312714403326055632220041'],
@@ -97,25 +102,28 @@ describe('multibase', () => {
 
     it('fails on no buf', () => {
       expect(() => {
+        // @ts-ignore
         multibase('base16')
       }).to.throw(Error)
     })
 
     it('fails on non supported name', () => {
       expect(() => {
+        // @ts-ignore
         multibase('base1001', Buffer.from('meh'))
       }).to.throw(Error)
     })
 
     it('fails on non supported code', () => {
       expect(() => {
+        // @ts-ignore
         multibase('6', Buffer.from('meh'))
       }).to.throw(Error)
     })
   })
 
   for (const elements of supportedBases) {
-    const name = elements[0]
+    const name = /** @type {string} */(elements[0])
     const input = elements[1]
     const output = elements[2]
     const base = constants.names[name]
@@ -254,7 +262,7 @@ describe('multibase.isEncoded', () => {
       Symbol('test')
     ]
 
-    invalidInputs.forEach(input => {
+    invalidInputs.forEach((/** @type {string} */input) => {
       expect(() => multibase.isEncoded(input)).to.not.throw()
       expect(multibase.isEncoded(input)).to.be.false()
     })

@@ -1,5 +1,7 @@
 /**
  * Implementation of the [multibase](https://github.com/multiformats/multibase) specification.
+ *
+ * @packageDocumentation
  * @module Multibase
  */
 'use strict'
@@ -7,19 +9,15 @@
 const { Buffer } = require('buffer')
 const constants = require('./constants')
 
-exports = module.exports = multibase
-exports.encode = encode
-exports.decode = decode
-exports.isEncoded = isEncoded
-exports.names = Object.freeze(Object.keys(constants.names))
-exports.codes = Object.freeze(Object.keys(constants.codes))
+/** @typedef {import("./base")} Base */
+/** @typedef {import("./types").BaseCodes} BaseCodes */
+/** @typedef {import("./types").BaseNames} BaseNames */
 
 /**
  * Create a new buffer with the multibase varint+code.
  *
- * @param {string|number} nameOrCode - The multibase name or code number.
+ * @param {BaseCodes|BaseNames} nameOrCode - The multibase name or code number.
  * @param {Buffer} buf - The data to be prefixed with multibase.
- * @memberof Multibase
  * @returns {Buffer}
  */
 function multibase (nameOrCode, buf) {
@@ -37,10 +35,9 @@ function multibase (nameOrCode, buf) {
 /**
  * Encode data with the specified base and add the multibase prefix.
  *
- * @param {string|number} nameOrCode - The multibase name or code number.
+ * @param {BaseCodes|BaseNames} nameOrCode - The multibase name or code number.
  * @param {Buffer} buf - The data to be encoded.
  * @returns {Buffer}
- * @memberof Multibase
  */
 function encode (nameOrCode, buf) {
   const base = getBase(nameOrCode)
@@ -55,15 +52,13 @@ function encode (nameOrCode, buf) {
  *
  * @param {Buffer|string} bufOrString
  * @returns {Buffer}
- * @memberof Multibase
- *
  */
 function decode (bufOrString) {
   if (Buffer.isBuffer(bufOrString)) {
     bufOrString = bufOrString.toString()
   }
 
-  const code = bufOrString.substring(0, 1)
+  const code = /** @type {BaseCodes} */(bufOrString.substring(0, 1))
   bufOrString = bufOrString.substring(1, bufOrString.length)
 
   if (typeof bufOrString === 'string') {
@@ -78,8 +73,7 @@ function decode (bufOrString) {
  * Is the given data multibase encoded?
  *
  * @param {Buffer|string} bufOrString
- * @returns {boolean}
- * @memberof Multibase
+ * @returns {boolean|string}
  */
 function isEncoded (bufOrString) {
   if (Buffer.isBuffer(bufOrString)) {
@@ -91,7 +85,7 @@ function isEncoded (bufOrString) {
     return false
   }
 
-  const code = bufOrString.substring(0, 1)
+  const code = /** @type {BaseCodes} */(bufOrString.substring(0, 1))
   try {
     const base = getBase(code)
     return base.name
@@ -101,17 +95,26 @@ function isEncoded (bufOrString) {
 }
 
 /**
- * @param {string} name
+ * Check if encoding is valid
+ *
+ * @param {BaseCodes|BaseNames} name
  * @param {Buffer} buf
  * @private
- * @returns {undefined}
+ * @returns {void}
  */
 function validEncode (name, buf) {
   const base = getBase(name)
   base.decode(buf.toString())
 }
 
+/**
+ * Get base to encode/decode without prefix
+ *
+ * @param {BaseCodes|BaseNames} nameOrCode
+ * @returns { Base }
+ */
 function getBase (nameOrCode) {
+  /** @type {Base} */
   let base
 
   if (constants.names[nameOrCode]) {
@@ -119,12 +122,17 @@ function getBase (nameOrCode) {
   } else if (constants.codes[nameOrCode]) {
     base = constants.codes[nameOrCode]
   } else {
-    throw new Error('Unsupported encoding')
-  }
-
-  if (!base.isImplemented()) {
-    throw new Error('Base ' + nameOrCode + ' is not implemented yet')
+    throw new Error(`Unsupported encoding: ${nameOrCode}`)
   }
 
   return base
 }
+
+module.exports = multibase
+
+multibase.encode = encode
+multibase.decode = decode
+multibase.isEncoded = isEncoded
+multibase.names = Object.freeze(Object.keys(constants.names))
+multibase.codes = Object.freeze(Object.keys(constants.codes))
+multibase.getBase = getBase

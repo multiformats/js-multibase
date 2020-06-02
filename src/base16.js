@@ -1,7 +1,16 @@
 'use strict'
 const { Buffer } = require('buffer')
 
-module.exports = function base16 (alphabet) {
+/** @typedef {import("./types").BaseInterface} BaseInterface */
+
+/**
+ * Base 16
+ *
+ * @internal
+ * @param {string} alphabet
+ * @returns {BaseInterface}
+ */
+const base16 = (alphabet) => {
   return {
     encode (input) {
       if (typeof input === 'string') {
@@ -19,3 +28,5 @@ module.exports = function base16 (alphabet) {
     }
   }
 }
+
+module.exports = base16

@@ -1,5 +1,14 @@
 'use strict'
+/** @typedef {import("./types").BaseInterface} BaseInterface */
+/** @typedef {import("./types").BaseConstructor} BaseConstructor */
 
+/**
+ *
+ * @internal
+ * @param {string} input
+ * @param {string} alphabet
+ * @returns {Uint8Array}
+ */
 function decode (input, alphabet) {
   input = input.replace(new RegExp('=', 'g'), '')
   const length = input.length
@@ -20,9 +29,17 @@ function decode (input, alphabet) {
     }
   }
 
-  return output.buffer
+  return output
 }
 
+/**
+ * Encode
+ *
+ * @internal
+ * @param {Buffer|Uint8Array} buffer
+ * @param {string} alphabet
+ * @returns {string}
+ */
 function encode (buffer, alphabet) {
   const length = buffer.byteLength
   const view = new Uint8Array(buffer)
@@ -59,12 +76,19 @@ function encode (buffer, alphabet) {
   return output
 }
 
-module.exports = function base32 (alphabet) {
+/**
+ *
+ * Base 32
+ *
+ * @type {BaseConstructor}
+ * @internal
+ */
+const base32 = (alphabet) => {
   return {
     encode (input) {
-      if (typeof input === 'string') {
-        return encode(Uint8Array.from(input), alphabet)
-      }
+      // if (typeof input === 'string') {
+      //   return encode(Uint8Array.from(input), alphabet)
+      // }
 
       return encode(input, alphabet)
     },
@@ -79,3 +103,5 @@ module.exports = function base32 (alphabet) {
     }
   }
 }
+
+module.exports = base32

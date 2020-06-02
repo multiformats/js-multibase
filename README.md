@@ -4,7 +4,6 @@ js-multibase
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](https://protocol.ai)
 [![](https://img.shields.io/badge/project-multiformats-blue.svg?style=flat-square)](https://github.com/multiformats/multiformats)
 [![](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](https://webchat.freenode.net/?channels=%23ipfs)
-[![Dependency Status](https://david-dm.org/multiformats/js-multibase.svg?style=flat-square)](https://david-dm.org/multiformats/js-multibase)
 [![codecov](https://img.shields.io/codecov/c/github/multiformats/js-multibase.svg?style=flat-square)](https://codecov.io/gh/multiformats/js-multibase)
 [![Travis CI](https://flat.badgen.net/travis/multiformats/js-multibase)](https://travis-ci.com/multiformats/js-multibase)
 
