@@ -2,8 +2,24 @@
   "name": "multibase",
   "version": "0.7.0",
   "description": "JavaScript implementation of the multibase specification",
-  "leadMaintainer": "Oli Evans <oli@tableflip.io>",
+  "keywords": [
+    "IPFS",
+    "multiformats",
+    "multibase",
+    "encode",
+    "decode",
+    "formats"
+  ],
+  "homepage": "https://github.com/multiformats/js-multibase#readme",
+  "bugs": "https://github.com/multiformats/js-multibase/issues",
+  "license": "MIT",
+  "leadMaintainer": "Hugo Dias <hugomrdias@gmail.com>",
+  "files": [
+    "src",
+    "dist"
+  ],
   "main": "src/index.js",
+  "repository": "github:multiformats/js-multibase",
   "scripts": {
     "lint": "aegir lint",
     "test": "aegir test",
@@ -17,37 +33,23 @@
     "coverage": "aegir coverage",
     "coverage-publish": "aegir coverage publish"
   },
-  "files": [
-    "src",
-    "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/multiformats/js-multibase.git"
+  "dependencies": {
+    "base-x": "^3.0.8",
+    "buffer": "^5.5.0"
   },
-  "keywords": [
-    "IPFS",
-    "multiformats",
-    "multibase",
-    "encode",
-    "decode",
-    "formats"
-  ],
   "devDependencies": {
     "aegir": "^22.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
     "pre-commit": "^1.2.2"
   },
-  "dependencies": {
-    "base-x": "^3.0.8",
-    "buffer": "^5.5.0"
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/multiformats/js-multibase/issues"
+  "eslintConfig": {
+    "extends": "./node_modules/aegir/src/config/eslintrc.js"
   },
-  "homepage": "https://github.com/multiformats/js-multibase#readme",
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
     "Oli Evans <oli@tableflip.io>",

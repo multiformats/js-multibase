@@ -12,7 +12,7 @@ js-multibase
 
 ## Lead Maintainer
 
-[Oli Evans](https://github.com/olizilla)
+[Hugo Dias](https://github.com/hugomrdias)
 
 ## Table of Contents
 
