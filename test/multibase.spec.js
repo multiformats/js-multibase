@@ -117,7 +117,6 @@ describe('multibase', () => {
     const base = constants.names[name]
     describe(name, () => {
       it('adds multibase code to valid encoded buffer, by name', () => {
-        console.log('input', input)
         if (typeof input === 'string') {
           const buf = Buffer.from(input)
           const encodedBuf = Buffer.from(base.encode(buf))
