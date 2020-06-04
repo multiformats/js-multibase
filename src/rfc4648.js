@@ -47,7 +47,7 @@ const decode = (string, alphabet, bitsPerChar) => {
 }
 
 const encode = (data, alphabet, bitsPerChar) => {
-  const pad = alphabet.indexOf('=') === alphabet.length - 1
+  const pad = alphabet[alphabet.length - 1] === '='
   const mask = (1 << bitsPerChar) - 1
   let out = ''
 
