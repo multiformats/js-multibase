@@ -16,6 +16,7 @@ const constants = require('./constants')
  * @param {string|number} nameOrCode - The multibase name or code number.
  * @param {Buffer} buf - The data to be prefixed with multibase.
  * @returns {Buffer}
+ * @throws {Error} Will throw if the encoding is not supported
  */
 function multibase (nameOrCode, buf) {
   if (!buf) {
@@ -32,6 +33,8 @@ function multibase (nameOrCode, buf) {
  * @param {string|number} nameOrCode - The multibase name or code number.
  * @param {Buffer} buf - The data to be encoded.
  * @returns {Buffer}
+ * @throws {Error} Will throw if the encoding is not supported
+ *
  */
 function encode (nameOrCode, buf) {
   const enc = encoding(nameOrCode)
@@ -45,6 +48,7 @@ function encode (nameOrCode, buf) {
  *
  * @param {Buffer|string} data
  * @returns {Buffer}
+ * @throws {Error} Will throw if the encoding is not supported
  *
  */
 function decode (data) {
@@ -52,11 +56,7 @@ function decode (data) {
     data = data.toString()
   }
   const enc = encoding(data[0])
-  if (enc) {
-    return Buffer.from(enc.decode(data.substring(1)))
-  }
-
-  throw new Error('Unsupported encoding')
+  return Buffer.from(enc.decode(data.substring(1)))
 }
 
 /**
@@ -89,6 +89,7 @@ function isEncoded (data) {
  * @param {string} name
  * @param {Buffer} buf
  * @returns {undefined}
+ * @throws {Error} Will throw if the encoding is not supported
  */
 function validEncode (name, buf) {
   const enc = encoding(name)
@@ -100,19 +101,16 @@ function validEncode (name, buf) {
  *
  * @param {string} nameOrCode
  * @returns {Base}
+ * @throws {Error} Will throw if the encoding is not supported
  */
 function encoding (nameOrCode) {
-  let enc
-
   if (constants.names[nameOrCode]) {
-    enc = constants.names[nameOrCode]
+    return constants.names[nameOrCode]
   } else if (constants.codes[nameOrCode]) {
-    enc = constants.codes[nameOrCode]
+    return constants.codes[nameOrCode]
   } else {
     throw new Error(`Unsupported encoding: ${nameOrCode}`)
   }
-
-  return enc
 }
 
 /**
@@ -120,6 +118,7 @@ function encoding (nameOrCode) {
  *
  * @param {string|Buffer} data
  * @returns {Base}
+ * @throws {Error} Will throw if the encoding is not supported
  */
 function encodingFromData (data) {
   if (Buffer.isBuffer(data)) {
