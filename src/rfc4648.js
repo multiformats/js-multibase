@@ -55,7 +55,7 @@ const encode = (data, alphabet, bitsPerChar) => {
   let buffer = 0 // Bits waiting to be written out, MSB first
   for (let i = 0; i < data.length; ++i) {
     // Slurp data into the buffer:
-    buffer = (buffer << 8) | (0xff & data[i])
+    buffer = (buffer << 8) | data[i]
     bits += 8
 
     // Write out as much as we can:
