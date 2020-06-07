@@ -13,7 +13,7 @@ const identity = () => {
 
 // name, code, implementation, alphabet
 const constants = [
-  ['identity', '\u0000', identity, ''],
+  ['identity', '\x00', identity, ''],
   ['base2', '0', rfc4648(1), '01'],
   ['base8', '7', rfc4648(3), '01234567'],
   ['base10', '9', baseX, '0123456789'],
