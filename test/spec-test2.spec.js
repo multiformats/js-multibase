@@ -6,7 +6,7 @@ const multibase = require('../src')
 const constants = require('../src/constants.js')
 const input = 'yes mani !'
 const encoded = [
-  ['identity', '\u0000yes mani !'],
+  ['identity', '\x00yes mani !'],
   ['base2', '001111001011001010111001100100000011011010110000101101110011010010010000000100001'],
   ['base8', '7362625631006654133464440102'],
   ['base10', '9573277761329450583662625'],
