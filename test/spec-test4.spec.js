@@ -8,8 +8,6 @@ const input = '\x00yes mani !'
 const encoded = [
   ['identity', '\u0000\x00yes mani !'],
   ['base2', '00000000001111001011001010111001100100000011011010110000101101110011010010010000000100001'],
-  // Spec value probably wrong, we use a different implementation that aligns with this PR https://github.com/multiformats/multibase/pull/60
-  // ['base8', '7000171312714403326055632220041'],
   ['base8', '7000745453462015530267151100204'],
   ['base10', '90573277761329450583662625'],
   ['base16', 'f00796573206d616e692021'],

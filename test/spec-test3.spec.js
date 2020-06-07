@@ -8,8 +8,6 @@ const input = 'hello world'
 const encoded = [
   ['identity', '\u0000hello world'],
   ['base2', '00110100001100101011011000110110001101111001000000111011101101111011100100110110001100100'],
-  // Spec value probably wrong, we use a different implementation that aligns with this PR https://github.com/multiformats/multibase/pull/60
-  // ['base8', '7064145330661571007355734466144'],
   ['base8', '7320625543306744035667562330620'],
   ['base10', '9126207244316550804821666916'],
   ['base16', 'f68656c6c6f20776f726c64'],
