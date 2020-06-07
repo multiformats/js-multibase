@@ -16,7 +16,7 @@ class Base {
   decode (string) {
     for (const char of string) {
       if (this.alphabet && this.alphabet.indexOf(char) < 0) {
-        throw new Error(`invalid ${this.name} character '${char}' in '${string}'`)
+        throw new Error(`invalid character '${char}' in '${string}'`)
       }
     }
     return this.engine.decode(string)

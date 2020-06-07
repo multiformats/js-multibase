@@ -55,6 +55,12 @@ function decode (data) {
   if (Buffer.isBuffer(data)) {
     data = data.toString()
   }
+  const prefix = data[0]
+
+  // Make all encodings case-insensitive expect the ones that include upper and lower chars in the alphabet
+  if (!['z', 'Z', 'm', 'M', 'u', 'U', '\x00'].includes(prefix)) {
+    data = data.toLocaleLowerCase()
+  }
   const enc = encoding(data[0])
   return Buffer.from(enc.decode(data.substring(1)))
 }

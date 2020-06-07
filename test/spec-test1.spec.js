@@ -67,7 +67,7 @@ describe('spec test1', () => {
         const nonEncodedBuf = Buffer.from(base.code + '^!@$%!#$%@#y')
         expect(() => {
           multibase.decode(nonEncodedBuf)
-        }).to.throw(Error, `invalid ${name} character '^' in '^!@$%!#$%@#y'`)
+        }).to.throw(Error, 'invalid character \'^\' in \'^!@$%!#$%@#y\'')
       })
     })
   }

@@ -19,8 +19,7 @@ const encoded = [
   ['base36upper', 'KfUVrSIVVnFRbJWAJo']
 ]
 
-// we dont need to actually test these because we check the chars against the alphabet
-describe.skip('spec test6', () => {
+describe('spec test6', () => {
   for (const e of encoded) {
     const name = e[0]
     const output = e[1]
