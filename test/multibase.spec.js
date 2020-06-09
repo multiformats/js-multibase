@@ -11,10 +11,6 @@ const constants = require('../src/constants.js')
 const unsupportedBases = []
 
 const supportedBases = [
-  ['base2', 'yes mani !', '01111001011001010111001100100000011011010110000101101110011010010010000000100001'],
-  ['base8', 'yes mani !', '7171312714403326055632220041'],
-  ['base10', 'yes mani !', '9573277761329450583662625'],
-  ['base16', 'yes mani !', 'f796573206d616e692021'],
 
   ['base16', Buffer.from([0x01]), 'f01'],
   ['base16', Buffer.from([15]), 'f0f'],
@@ -219,7 +215,7 @@ for (const elements of unsupportedBases) {
 describe('multibase.names', () => {
   it('includes all base names', () => {
     Object.keys(constants.names).forEach(name => {
-      expect(multibase.names).to.include(name)
+      expect(Object.keys(multibase.names)).to.include(name)
     })
   })
 
@@ -231,7 +227,7 @@ describe('multibase.names', () => {
 describe('multibase.codes', () => {
   it('includes all base codes', () => {
     Object.keys(constants.codes).forEach(code => {
-      expect(multibase.codes).to.include(code)
+      expect(Object.keys(multibase.codes)).to.include(code)
     })
   })
 

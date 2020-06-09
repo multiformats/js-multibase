@@ -17,10 +17,8 @@ js-multibase
 ## Table of Contents
 
 - [Install](#install)
-  - [In Node.js through npm](#in-nodejs-through-npm)
-  - [Browser: Browserify, Webpack, other bundlers](#browser-browserify-webpack-other-bundlers)
+  - [NPM](#npm)
   - [In the Browser through `<script>` tag](#in-the-browser-through-script-tag)
-    - [Gotchas](#gotchas)
 - [Usage](#usage)
   - [Example](#example)
 - [API](#api)
@@ -37,10 +35,10 @@ js-multibase
 
 ## Install
 
-### In Node.js through npm
+### NPM
 
-```bash
-> npm install --save multibase
+```sh
+$ npm install --save multibase
 ```
 
 The type definitions for this package are available on http://definitelytyped.org/. To install just use:
@@ -49,23 +47,12 @@ The type definitions for this package are available on http://definitelytyped.or
 $ npm install -D @types/multibase
 ```
 
-### Browser: Browserify, Webpack, other bundlers
-
-The code published to npm that gets loaded on require is in fact an ES5 transpiled version with the right shims added. This means that you can require it and use with your favourite bundler without having to adjust asset management process.
-
-```js
-const multibase = require('multibase')
-```
-
-
 ### In the Browser through `<script>` tag
 
 Loading this module through a script tag will make the ```Multibase``` obj available in the global namespace.
 
 ```html
 <script src="https://unpkg.com/multibase/dist/index.min.js"></script>
-<!-- OR -->
-<script src="https://unpkg.com/multibase/dist/index.js"></script>
 ```
 
 ## Usage
@@ -86,111 +73,54 @@ console.log(decodedBuf.toString())
 ## API
 https://multiformats.github.io/js-multibase/
 
-### `multibase` - Prefixes an encoded buffer with its multibase code
+#### `multibase` - Prefixes an encoded buffer with its multibase code
 
 ```
 const multibased = multibase(<nameOrCode>, encodedBuf)
 ```
 
-### `multibase.encode` - Encodes a buffer into one of the supported encodings, prefixing it with the multibase code
+#### `multibase.encode` - Encodes a buffer into one of the supported encodings, prefixing it with the multibase code
 
 ```JavaScript
 const encodedBuf = multibase.encode(<nameOrCode>, <buf>)
 ```
 
-### `multibase.decode` - Decodes a buffer or string
+#### `multibase.decode` - Decodes a buffer or string
 
 ```JavaScript
 const decodedBuf = multibase.decode(bufOrString)
 ```
 
-### `multibase.isEncoded` - Checks if buffer or string is encoded
+#### `multibase.isEncoded` - Checks if buffer or string is encoded
 
 ```JavaScript
 const value = multibase.isEncoded(bufOrString)
 // value is the name of the encoding if it is encoded, false otherwise
 ```
 
-### `multibase.names`
+#### `multibase.encoding` - Get the encoding by name or code
 
-A frozen `Array` of supported base encoding names.
+```JavaScript
+const value = multibase.encoding(nameOrCode)
+// value is an instance of the corresponding `Base`
+```
 
-### `multibase.codes`
+#### `multibase.encodingFromData` - Get the encoding from data either a `string` or `Buffer`
 
-A frozen `Array` of supported base encoding codes.
+```JavaScript
+const value = multibase.encodingFromData(data)
+// value is an instance of the corresponding `Base`
+```
+
+#### `multibase.names`
+
+A frozen `Object` of supported base encoding names mapped to the corresponding `Base` instance.
+
+#### `multibase.codes`
+
+A frozen `Object` of supported base encoding codes  mapped to the corresponding `Base` instance.
 
 ### Supported Encodings, see [`src/constants.js`](/src/constants.js)
-
-## Architecture and Encoding/Decoding
-
-Multibase package defines all the supported bases and the location of their implementation in the constants.js file. A base is a class with a name, a code, an implementation and an alphabet.
-```js
-class Base {
-  constructor (name, code, implementation, alphabet) {
-    //...
-  }
-  // ...
-}
-```
-The ```implementation``` is an object where the encoding/decoding functions are implemented. It must take one argument, (the alphabet) following the [base-x module](https://github.com/cryptocoinjs/base-x) architecture.
-
-The ```alphabet``` is the **ordered** set of defined symbols for a given base.
-
-The idea behind this is that several bases may have implementations from different locations/modules so it's useful to have an object (and a summary) of all of them in one location (hence the constants.js).
-
-All the supported bases are currently using the npm [base-x](https://github.com/cryptocoinjs/base-x) module as their implementation. It is using bitwise maipulation to go from one base to another, so this module does not support padding at the moment.
-
-## Adding additional bases
-
-If the base you are looking for is not supported yet in js-multibase and you know a good encoding/decoding algorithm, you can add support for this base easily by editing the constants.js file
-(**you'll need to create an issue about that beforehand since a code and a canonical name have to be defined**):
-
-```js
-const baseX = require('base-x')
-//const newPackage = require('your-package-name')
-
-const constants = [
-  ['base2', '0', baseX, '01'],
-  ['base8', '7', baseX, '01234567'],
-  // ... [ 'your-base-name', 'code-to-be-defined', newPackage, 'alphabet']
-]
-```
-The required package defines the implementation of the encoding/decoding process. **It must comply by these rules** :
-- `encode` and `decode` functions with to-be-encoded buffer as the only expected argument
-- the require call use the `alphabet` given as an argument for the encoding/decoding process
-
-*If no package is specified , it means the base is not implemented yet*
-
-Adding a new base requires the tests to be updated. Test files to be updated are :
-- constants.spec.js
-```js
-describe('constants', () => {
-  it('constants indexed by name', () => {
-    const names = constants.names
-    expect(Object.keys(names).length).to.equal(constants-count) // currently 12
-  })
-
-  it('constants indexed by code', () => {
-    const codes = constants.codes
-    expect(Object.keys(codes).length).to.equal(constants-count)
-  })
-})
-```
-
-- multibase.spec.js
-    - if the base is implemented
-    ```js
-    const supportedBases = [
-      ['base2', 'yes mani !', '01111001011001010111001100100000011011010110000101101110011010010010000000100001'],
-      ['base8', 'yes mani !', '7171312714403326055632220041'],
-      ['base10', 'yes mani !', '9573277761329450583662625'],
-      // ... ['your-base-name', 'what you want', 'expected output']
-    ```
-    - if the base is not implemented yet
-    ```js
-    const supportedBases = [
-      // ... ['your-base-name']
-    ```
 
 ## Contribute
 
