@@ -57,9 +57,9 @@ function decode (data) {
   }
   const prefix = data[0]
 
-  // Make all encodings case-insensitive expect the ones that include upper and lower chars in the alphabet
-  if (!['z', 'Z', 'm', 'M', 'u', 'U', '\x00'].includes(prefix)) {
-    data = data.toLocaleLowerCase()
+  // Make all encodings case-insensitive except the ones that include upper and lower chars in the alphabet
+  if (['f', 'F', 'v', 'V', 't', 'T', 'b', 'B', 'c', 'C', 'h', 'k', 'K'].includes(prefix)) {
+    data = data.toLowerCase()
   }
   const enc = encoding(data[0])
   return Buffer.from(enc.decode(data.substring(1)))

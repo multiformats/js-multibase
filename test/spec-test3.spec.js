@@ -32,9 +32,7 @@ const encoded = [
 ]
 
 describe('spec test3', () => {
-  for (const e of encoded) {
-    const name = e[0]
-    const output = e[1]
+  for (const [name, output] of encoded) {
     const base = constants.names[name]
 
     describe(name, () => {

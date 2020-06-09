@@ -20,10 +20,7 @@ const encoded = [
 ]
 
 describe('spec test6', () => {
-  for (const e of encoded) {
-    const name = e[0]
-    const output = e[1]
-
+  for (const [name, output] of encoded) {
     describe(name, () => {
       it('should decode string', () => {
         const out = multibase.decode(output)
