@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>multibase 0.7.0 | Documentation</title>
+  <title>multibase 1.0.0 | Documentation</title>
   <meta name='description' content='JavaScript implementation of the multibase specification'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,11 +15,14 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>multibase</h3>
-          <div class='mb1'><code>0.7.0</code></div>
+          <div class='mb1'><code>1.0.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
             class='col12 block input'
+            spellcheck='false'
+            autocapitalize='off'
+            autocorrect='off'
             type='text' />
           <div id='toc'>
             <ul class='list-reset h5 py1-ul'>
@@ -37,46 +40,90 @@
                 
                 <li><a
                   href='#multibase'
-                  class=" toggle-sibling">
+                  class="">
                   Multibase
-                  <span class='icon'>▸</span>
+                  
                 </a>
                 
-                <div class='toggle-target display-none'>
+                </li>
+              
+                
+                <li><a
+                  href='#multibase'
+                  class="">
+                  multibase
                   
-                  <ul class='list-reset py1-ul pl1'>
-                    <li class='h5'><span>Static members</span></li>
-                    
-                      <li><a
-                        href='#multibasemultibase'
-                        class='regular pre-open'>
-                        .multibase
-                      </a></li>
-                    
-                      <li><a
-                        href='#multibaseencode'
-                        class='regular pre-open'>
-                        .encode
-                      </a></li>
-                    
-                      <li><a
-                        href='#multibasedecode'
-                        class='regular pre-open'>
-                        .decode
-                      </a></li>
-                    
-                      <li><a
-                        href='#multibaseisencoded'
-                        class='regular pre-open'>
-                        .isEncoded
-                      </a></li>
-                    
-                    </ul>
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#multibase'
+                  class="">
+                  multibase
                   
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#encode'
+                  class="">
+                  encode
                   
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#decode'
+                  class="">
+                  decode
                   
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#isencoded'
+                  class="">
+                  isEncoded
                   
-                </div>
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#validencode'
+                  class="">
+                  validEncode
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#encoding'
+                  class="">
+                  encoding
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#encodingfromdata'
+                  class="">
+                  encodingFromData
+                  
+                </a>
                 
                 </li>
               
@@ -110,7 +157,7 @@
 <span class="hljs-comment">// =&gt; hey, how it going</span></pre>
 <p>There are more available, so take a look at the docs below for a full list. This documentation aims to be comprehensive, so if you feel anything is missing please create a GitHub issue for it.</p>
 <h2>Download</h2>
-<p>The source is available for download from <a href="git+https://github.com/multiformats/js-multibase.git">GitHub</a>. Alternatively, you can install using npm:</p>
+<p>The source is available for download from <a href="undefined">GitHub</a>. Alternatively, you can install using npm:</p>
 <pre class='hljs'>$ npm install --save multibase</pre>
 <p>You can then <code>require()</code> multibase as normal:</p>
 <pre class='hljs'><span class="hljs-keyword">const</span> multibase = <span class="hljs-built_in">require</span>(<span class="hljs-string">'multibase'</span>)</pre>
@@ -139,7 +186,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/d81b6886f6485b44734d141cc5e26671a30b97ef/src/index.js#L5-L5'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/470ca47fae3e50083d7b641759961bf35c2b4a6e/src/index.js#L6-L6'>
       <span>src/index.js</span>
       </a>
     
@@ -170,24 +217,104 @@
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Static Members</div>
-    <div class="clearfix">
+
   
-    <div class='border-bottom' id='multibasemultibase'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>multibase(nameOrCode, buf)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='multibase'>
+      multibase
+    </h3>
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/d81b6886f6485b44734d141cc5e26671a30b97ef/src/index.js#L25-L35'>
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/470ca47fae3e50083d7b641759961bf35c2b4a6e/src/index.js#L21-L28'>
+      <span>src/index.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>multibase(nameOrCode: any, buf: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>nameOrCode</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>buf</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='multibase'>
+      multibase
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/470ca47fae3e50083d7b641759961bf35c2b4a6e/src/index.js#L21-L28'>
       <span>src/index.js</span>
       </a>
     
@@ -247,6 +374,16 @@
   
 
   
+    <div class='py1 quiet mt1 prose-big'>Throws</div>
+    <ul>
+      
+        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: Will throw if the encoding is not supported
+</li>
+      
+    </ul>
+  
+
+  
 
   
 
@@ -257,24 +394,20 @@
   
 </section>
 
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='multibaseencode'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>encode(nameOrCode, buf)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='encode'>
+      encode
+    </h3>
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/d81b6886f6485b44734d141cc5e26671a30b97ef/src/index.js#L45-L50'>
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/470ca47fae3e50083d7b641759961bf35c2b4a6e/src/index.js#L39-L43'>
       <span>src/index.js</span>
       </a>
     
@@ -334,6 +467,16 @@
   
 
   
+    <div class='py1 quiet mt1 prose-big'>Throws</div>
+    <ul>
+      
+        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: Will throw if the encoding is not supported
+</li>
+      
+    </ul>
+  
+
+  
 
   
 
@@ -344,24 +487,20 @@
   
 </section>
 
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='multibasedecode'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>decode(bufOrString)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='decode'>
+      decode
+    </h3>
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/d81b6886f6485b44734d141cc5e26671a30b97ef/src/index.js#L61-L75'>
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/470ca47fae3e50083d7b641759961bf35c2b4a6e/src/index.js#L54-L66'>
       <span>src/index.js</span>
       </a>
     
@@ -371,7 +510,7 @@
   <p>Takes a buffer or string encoded with multibase header, decodes it and
 returns the decoded buffer</p>
 
-    <div class='pre p1 fill-light mt0'>decode(bufOrString: (<a href="https://nodejs.org/api/buffer.html">Buffer</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)): <a href="https://nodejs.org/api/buffer.html">Buffer</a></div>
+    <div class='pre p1 fill-light mt0'>decode(data: (<a href="https://nodejs.org/api/buffer.html">Buffer</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)): <a href="https://nodejs.org/api/buffer.html">Buffer</a></div>
   
   
 
@@ -388,7 +527,7 @@ returns the decoded buffer</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>bufOrString</span> <code class='quiet'>((<a href="https://nodejs.org/api/buffer.html">Buffer</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>))</code>
+            <span class='code bold'>data</span> <code class='quiet'>((<a href="https://nodejs.org/api/buffer.html">Buffer</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>))</code>
 	    
           </div>
           
@@ -412,6 +551,16 @@ returns the decoded buffer</p>
   
 
   
+    <div class='py1 quiet mt1 prose-big'>Throws</div>
+    <ul>
+      
+        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: Will throw if the encoding is not supported
+</li>
+      
+    </ul>
+  
+
+  
 
   
 
@@ -422,24 +571,20 @@ returns the decoded buffer</p>
   
 </section>
 
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='multibaseisencoded'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>isEncoded(bufOrString)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='isencoded'>
+      isEncoded
+    </h3>
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/d81b6886f6485b44734d141cc5e26671a30b97ef/src/index.js#L84-L101'>
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/470ca47fae3e50083d7b641759961bf35c2b4a6e/src/index.js#L74-L90'>
       <span>src/index.js</span>
       </a>
     
@@ -448,7 +593,7 @@ returns the decoded buffer</p>
 
   <p>Is the given data multibase encoded?</p>
 
-    <div class='pre p1 fill-light mt0'>isEncoded(bufOrString: (<a href="https://nodejs.org/api/buffer.html">Buffer</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+    <div class='pre p1 fill-light mt0'>isEncoded(data: (<a href="https://nodejs.org/api/buffer.html">Buffer</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
   
   
 
@@ -465,7 +610,7 @@ returns the decoded buffer</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>bufOrString</span> <code class='quiet'>((<a href="https://nodejs.org/api/buffer.html">Buffer</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>))</code>
+            <span class='code bold'>data</span> <code class='quiet'>((<a href="https://nodejs.org/api/buffer.html">Buffer</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>))</code>
 	    
           </div>
           
@@ -497,12 +642,257 @@ returns the decoded buffer</p>
   
 
   
+
+  
 </section>
 
-      </div>
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='validencode'>
+      validEncode
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/470ca47fae3e50083d7b641759961bf35c2b4a6e/src/index.js#L100-L103'>
+      <span>src/index.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Validate encoded data</p>
+
+    <div class='pre p1 fill-light mt0'>validEncode(name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, buf: <a href="https://nodejs.org/api/buffer.html">Buffer</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>buf</span> <code class='quiet'>(<a href="https://nodejs.org/api/buffer.html">Buffer</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
     </div>
   
-</div>
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Throws</div>
+    <ul>
+      
+        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: Will throw if the encoding is not supported
+</li>
+      
+    </ul>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='encoding'>
+      encoding
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/470ca47fae3e50083d7b641759961bf35c2b4a6e/src/index.js#L112-L120'>
+      <span>src/index.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Get the encoding by name or code</p>
+
+    <div class='pre p1 fill-light mt0'>encoding(nameOrCode: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): Base</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>nameOrCode</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Base</code>:
+        
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Throws</div>
+    <ul>
+      
+        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: Will throw if the encoding is not supported
+</li>
+      
+    </ul>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='encodingfromdata'>
+      encodingFromData
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multibase/blob/470ca47fae3e50083d7b641759961bf35c2b4a6e/src/index.js#L129-L135'>
+      <span>src/index.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Get encoding from data</p>
+
+    <div class='pre p1 fill-light mt0'>encodingFromData(data: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://nodejs.org/api/buffer.html">Buffer</a>)): Base</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>data</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://nodejs.org/api/buffer.html">Buffer</a>))</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Base</code>:
+        
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Throws</div>
+    <ul>
+      
+        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: Will throw if the encoding is not supported
+</li>
+      
+    </ul>
+  
+
+  
 
   
 
