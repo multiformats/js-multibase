@@ -1,3 +1,18 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/multiformats/js-multibase/compare/v0.7.0...v1.0.0) (2020-06-09)
+
+
+### Features
+
+* more encoding, errors, spec tests ([#55](https://github.com/multiformats/js-multibase/issues/55)) ([613363b](https://github.com/multiformats/js-multibase/commit/613363b)), closes [#49](https://github.com/multiformats/js-multibase/issues/49) [#38](https://github.com/multiformats/js-multibase/issues/38) [#46](https://github.com/multiformats/js-multibase/issues/46) [#53](https://github.com/multiformats/js-multibase/issues/53) [#26](https://github.com/multiformats/js-multibase/issues/26)
+
+
+### BREAKING CHANGES
+
+* `names` and `codes` export the full object that maps names/codes to base instances instead of just the keys
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/multiformats/js-multibase/compare/v0.6.1...v0.7.0) (2020-03-16)
 
