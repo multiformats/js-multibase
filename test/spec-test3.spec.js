@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 'use strict'
 
+const { Buffer } = require('buffer')
 const { expect } = require('aegir/utils/chai')
 const multibase = require('../src')
 const constants = require('../src/constants.js')

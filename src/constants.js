@@ -1,7 +1,8 @@
 'use strict'
 
-const Base = require('./base.js')
 const baseX = require('base-x')
+const { Buffer } = require('buffer')
+const Base = require('./base.js')
 const rfc4648 = require('./rfc4648')
 
 const identity = () => {
