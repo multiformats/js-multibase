@@ -45,7 +45,7 @@ jobs:
       - run: yarn aegir test -t browser -t webworker -- --browsers FirefoxHeadless
   test-electron-main:
     needs: check
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - run: yarn
