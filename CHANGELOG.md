@@ -1,3 +1,13 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/multiformats/js-multibase/compare/v1.0.0...v1.0.1) (2020-06-18)
+
+
+### Bug Fixes
+
+* add buffer require ([#58](https://github.com/multiformats/js-multibase/issues/58)) ([d8aef0a](https://github.com/multiformats/js-multibase/commit/d8aef0a))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/multiformats/js-multibase/compare/v0.7.0...v1.0.0) (2020-06-09)
 
