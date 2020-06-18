@@ -45,16 +45,15 @@ jobs:
       - run: yarn aegir test -t browser -t webworker -- --browsers FirefoxHeadless
   test-electron-main:
     needs: check
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: yarn
-      - run: yarn aegir test -t electron-main --bail
+      - run: npx xvfb-maybe yarn aegir test -t electron-main --bail
   test-electron-renderer:
     needs: check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sudo apt-get install xvfb
       - run: yarn
       - run: npx xvfb-maybe yarn aegir test -t electron-renderer --bail
