@@ -1,11 +1,8 @@
 /* eslint-env mocha */
 'use strict'
 
-const chai = require('chai')
+const { expect } = require('aegir/utils/chai')
 const { Buffer } = require('buffer')
-const dirtyChai = require('dirty-chai')
-const expect = chai.expect
-chai.use(dirtyChai)
 const multibase = require('../src')
 const constants = require('../src/constants.js')
 
