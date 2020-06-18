@@ -1,4 +1,5 @@
 'use strict'
+const { Buffer } = require('buffer')
 
 class Base {
   constructor (name, code, implementation, alphabet) {
