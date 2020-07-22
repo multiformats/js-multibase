@@ -2,21 +2,16 @@
 'use strict'
 
 const { Buffer } = require('buffer')
+const { TextEncoder, TextDecoder } = require('web-encoding')
 
-const textDecoder = typeof TextDecoder !== 'undefined'
-  ? new TextDecoder()
-  : new (require('util').TextDecoder)()
-
-const textEncoder = typeof TextEncoder !== 'undefined'
-  ? new TextEncoder()
-  : new (require('util').TextEncoder)()
-
+const textDecoder = new TextDecoder()
 /**
  * @param {ArrayBufferView|ArrayBuffer} bytes
  * @returns {string}
  */
 const decodeText = (bytes) => textDecoder.decode(bytes)
 
+const textEncoder = new TextEncoder()
 /**
  * @param {string} text
  * @returns {Uint8Array}
