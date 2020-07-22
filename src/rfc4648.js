@@ -1,5 +1,14 @@
+// @ts-check
 'use strict'
 
+/** @typedef {import('./base').CodecFactory} CodecFactory */
+
+/**
+ * @param {string} string
+ * @param {string} alphabet
+ * @param {number} bitsPerChar
+ * @returns {Uint8Array}
+ */
 const decode = (string, alphabet, bitsPerChar) => {
   // Build the character lookup table:
   const codes = {}
@@ -46,6 +55,12 @@ const decode = (string, alphabet, bitsPerChar) => {
   return out
 }
 
+/**
+ * @param {Uint8Array} data
+ * @param {string} alphabet
+ * @param {number} bitsPerChar
+ * @returns {string}
+ */
 const encode = (data, alphabet, bitsPerChar) => {
   const pad = alphabet[alphabet.length - 1] === '='
   const mask = (1 << bitsPerChar) - 1
@@ -80,11 +95,23 @@ const encode = (data, alphabet, bitsPerChar) => {
   return out
 }
 
+/**
+ * @param {number} bitsPerChar
+ * @returns {CodecFactory}
+ */
 module.exports = (bitsPerChar) => (alphabet) => {
   return {
+    /**
+     * @param {Uint8Array} input
+     * @returns {string}
+     */
     encode (input) {
       return encode(input, alphabet, bitsPerChar)
     },
+    /**
+     * @param {string} input
+     * @returns {Uint8Array}
+     */
     decode (input) {
       return decode(input, alphabet, bitsPerChar)
     }
