@@ -1,18 +1,24 @@
+// @ts-check
 'use strict'
 
 const baseX = require('base-x')
-const { Buffer } = require('buffer')
 const Base = require('./base.js')
 const rfc4648 = require('./rfc4648')
+const { decodeText, encodeText } = require('./util')
 
 const identity = () => {
   return {
-    encode: (data) => Buffer.from(data).toString(),
-    decode: (string) => Buffer.from(string)
+    encode: decodeText,
+    decode: encodeText
   }
 }
 
-// name, code, implementation, alphabet
+/**
+ * @typedef {import('./base').CodecFactory} CodecFactory
+ *
+ * name, code, implementation, alphabet
+ * @type {Array<[string, string, CodecFactory, string]>}
+ */
 const constants = [
   ['identity', '\x00', identity, ''],
   ['base2', '0', rfc4648(1), '01'],

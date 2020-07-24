@@ -35,7 +35,8 @@
   },
   "dependencies": {
     "base-x": "^3.0.8",
-    "buffer": "^5.5.0"
+    "buffer": "^5.5.0",
+    "web-encoding": "^1.0.2"
   },
   "devDependencies": {
     "aegir": "^25.0.0",

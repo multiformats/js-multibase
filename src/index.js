@@ -1,3 +1,4 @@
+// @ts-check
 /**
  * Implementation of the [multibase](https://github.com/multiformats/multibase) specification.
  *
@@ -7,6 +8,7 @@
 
 const { Buffer } = require('buffer')
 const constants = require('./constants')
+const { decodeText, asBuffer } = require('./util')
 
 /** @typedef {import("./base")} Base */
 
@@ -14,7 +16,7 @@ const constants = require('./constants')
  * Create a new buffer with the multibase varint+code.
  *
  * @param {string|number} nameOrCode - The multibase name or code number.
- * @param {Buffer} buf - The data to be prefixed with multibase.
+ * @param {Uint8Array} buf - The data to be prefixed with multibase.
  * @returns {Buffer}
  * @throws {Error} Will throw if the encoding is not supported
  */
@@ -22,16 +24,21 @@ function multibase (nameOrCode, buf) {
   if (!buf) {
     throw new Error('requires an encoded buffer')
   }
-  const enc = encoding(nameOrCode)
-  validEncode(enc.name, buf)
-  return Buffer.concat([enc.codeBuf, buf])
+  const { name, codeBuf } = encoding(nameOrCode)
+  validEncode(name, buf)
+
+  const buffer = Buffer.alloc(codeBuf.length + buf.length)
+  buffer.set(codeBuf, 0)
+  buffer.set(buf, codeBuf.length)
+
+  return buffer
 }
 
 /**
  * Encode data with the specified base and add the multibase prefix.
  *
  * @param {string|number} nameOrCode - The multibase name or code number.
- * @param {Buffer} buf - The data to be encoded.
+ * @param {Uint8Array} buf - The data to be encoded.
  * @returns {Buffer}
  * @throws {Error} Will throw if the encoding is not supported
  *
@@ -43,17 +50,17 @@ function encode (nameOrCode, buf) {
 }
 
 /**
- * Takes a buffer or string encoded with multibase header, decodes it and
+ * Takes a Uint8Array or string encoded with multibase header, decodes it and
  * returns the decoded buffer
  *
- * @param {Buffer|string} data
+ * @param {Uint8Array|string} data
  * @returns {Buffer}
  * @throws {Error} Will throw if the encoding is not supported
  *
  */
 function decode (data) {
-  if (Buffer.isBuffer(data)) {
-    data = data.toString()
+  if (ArrayBuffer.isView(data)) {
+    data = decodeText(data)
   }
   const prefix = data[0]
 
@@ -62,18 +69,18 @@ function decode (data) {
     data = data.toLowerCase()
   }
   const enc = encoding(data[0])
-  return Buffer.from(enc.decode(data.substring(1)))
+  return asBuffer(enc.decode(data.substring(1)))
 }
 
 /**
  * Is the given data multibase encoded?
  *
- * @param {Buffer|string} data
- * @returns {boolean}
+ * @param {Uint8Array|string} data
+ * @returns {false|string}
  */
 function isEncoded (data) {
-  if (Buffer.isBuffer(data)) {
-    data = data.toString()
+  if (data instanceof Uint8Array) {
+    data = decodeText(data)
   }
 
   // Ensure bufOrString is a string
@@ -93,19 +100,19 @@ function isEncoded (data) {
  * Validate encoded data
  *
  * @param {string} name
- * @param {Buffer} buf
- * @returns {undefined}
+ * @param {Uint8Array} buf
+ * @returns {void}
  * @throws {Error} Will throw if the encoding is not supported
  */
 function validEncode (name, buf) {
   const enc = encoding(name)
-  enc.decode(buf.toString())
+  enc.decode(decodeText(buf))
 }
 
 /**
  * Get the encoding by name or code
  *
- * @param {string} nameOrCode
+ * @param {string|number} nameOrCode
  * @returns {Base}
  * @throws {Error} Will throw if the encoding is not supported
  */
@@ -122,13 +129,13 @@ function encoding (nameOrCode) {
 /**
  * Get encoding from data
  *
- * @param {string|Buffer} data
+ * @param {string|Uint8Array} data
  * @returns {Base}
  * @throws {Error} Will throw if the encoding is not supported
  */
 function encodingFromData (data) {
-  if (Buffer.isBuffer(data)) {
-    data = data.toString()
+  if (data instanceof Uint8Array) {
+    data = decodeText(data)
   }
 
   return encoding(data[0])

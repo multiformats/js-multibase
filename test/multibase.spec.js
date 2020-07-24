@@ -3,6 +3,7 @@
 
 const { expect } = require('aegir/utils/chai')
 const { Buffer } = require('buffer')
+const { encodeText } = require('../src/util')
 const multibase = require('../src')
 const constants = require('../src/constants.js')
 
@@ -10,8 +11,8 @@ const unsupportedBases = []
 
 const supportedBases = [
 
-  ['base16', Buffer.from([0x01]), 'f01'],
-  ['base16', Buffer.from([15]), 'f0f'],
+  ['base16', Buffer.from([0x01]).toString(), 'f01'],
+  ['base16', Buffer.from([15]).toString(), 'f0f'],
   ['base16', 'f', 'f66'],
   ['base16', 'fo', 'f666f'],
   ['base16', 'foo', 'f666f6f'],
@@ -83,6 +84,11 @@ const supportedBases = [
   ['base64urlpad', '÷ïÿ🥰÷ïÿ😎🥶🤯', 'Uw7fDr8O_8J-lsMO3w6_Dv_CfmI7wn6W28J-krw==']
 ]
 
+const they = (label, def) => {
+  it(`${label} (Buffer)`, def.bind(null, Buffer.from))
+  it(`${label} (Uint8Array)`, def.bind(null, encodeText))
+}
+
 describe('multibase', () => {
   describe('generic', () => {
     it('fails on no args', () => {
@@ -95,15 +101,15 @@ describe('multibase', () => {
       }).to.throw(Error)
     })
 
-    it('fails on non supported name', () => {
+    they('fails on non supported name', (encode) => {
       expect(() => {
-        multibase('base1001', Buffer.from('meh'))
+        multibase('base1001', encode('meh'))
       }).to.throw(Error)
     })
 
-    it('fails on non supported code', () => {
+    they('fails on non supported code', (encode) => {
       expect(() => {
-        multibase('6', Buffer.from('meh'))
+        multibase('6', encode('meh'))
       }).to.throw(Error)
     })
   })
@@ -114,28 +120,28 @@ describe('multibase', () => {
     const output = elements[2]
     const base = constants.names[name]
     describe(name, () => {
-      it('adds multibase code to valid encoded buffer, by name', () => {
+      they('adds multibase code to valid encoded buffer, by name', (encode) => {
         if (typeof input === 'string') {
-          const buf = Buffer.from(input)
-          const encodedBuf = Buffer.from(base.encode(buf))
+          const buf = encode(input)
+          const encodedBuf = encode(base.encode(buf))
           const multibasedBuf = multibase(base.name, encodedBuf)
           expect(multibasedBuf.toString()).to.equal(output)
         } else {
-          const encodedBuf = Buffer.from(base.encode(input))
+          const encodedBuf = encode(base.encode(input))
           const multibasedBuf = multibase(base.name, encodedBuf)
           expect(multibasedBuf.toString()).to.equal(output)
         }
       })
 
-      it('adds multibase code to valid encoded buffer, by code', () => {
-        const buf = Buffer.from(input)
-        const encodedBuf = Buffer.from(base.encode(buf))
+      they('adds multibase code to valid encoded buffer, by code', (encode) => {
+        const buf = encode(input)
+        const encodedBuf = encode(base.encode(buf))
         const multibasedBuf = multibase(base.code, encodedBuf)
         expect(multibasedBuf.toString()).to.equal(output)
       })
 
-      it('fails to add multibase code to invalid encoded buffer', () => {
-        const nonEncodedBuf = Buffer.from('^!@$%!#$%@#y')
+      they('fails to add multibase code to invalid encoded buffer', (encode) => {
+        const nonEncodedBuf = encode('^!@$%!#$%@#y')
         expect(() => {
           multibase(base.name, nonEncodedBuf)
         }).to.throw(Error)
@@ -146,8 +152,8 @@ describe('multibase', () => {
         expect(name).to.equal(base.name)
       })
 
-      it('isEncoded buffer', () => {
-        const multibasedStr = Buffer.from(output)
+      they('isEncoded buffer', (encode) => {
+        const multibasedStr = encode(output)
         const name = multibase.isEncoded(multibasedStr)
         expect(name).to.equal(base.name)
       })
@@ -161,8 +167,8 @@ describe('multibase.encode ', () => {
     const input = elements[1]
     const output = elements[2]
     describe(name, () => {
-      it('encodes a buffer', () => {
-        const buf = Buffer.from(input)
+      they('encodes a buffer', (encode) => {
+        const buf = encode(input)
         const multibasedBuf = multibase.encode(name, buf)
         expect(multibasedBuf.toString()).to.equal(output)
       })
@@ -190,8 +196,8 @@ describe('multibase.decode', () => {
         expect(buf).to.eql(Buffer.from(input))
       })
 
-      it('decodes a buffer', () => {
-        const multibasedBuf = Buffer.from(output)
+      they('decodes a buffer', (encode) => {
+        const multibasedBuf = encode(output)
         const buf = multibase.decode(multibasedBuf)
         expect(buf).to.eql(Buffer.from(input))
       })
@@ -202,9 +208,9 @@ describe('multibase.decode', () => {
 for (const elements of unsupportedBases) {
   const name = elements[0]
   describe(name, () => {
-    it('fails on non implemented name', () => {
+    they('fails on non implemented name', (encode) => {
       expect(() => {
-        multibase(name, Buffer.from('meh'))
+        multibase(name, encode('meh'))
       }).to.throw(Error)
     })
   })
