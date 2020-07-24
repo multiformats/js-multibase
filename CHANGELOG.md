@@ -1,3 +1,13 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/multiformats/js-multibase/compare/v1.0.1...v2.0.0) (2020-07-24)
+
+
+### Features
+
+* accept Uint8Arrays in place of Buffers ([#61](https://github.com/multiformats/js-multibase/issues/61)) ([abc1595](https://github.com/multiformats/js-multibase/commit/abc1595))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/multiformats/js-multibase/compare/v1.0.0...v1.0.1) (2020-06-18)
 
