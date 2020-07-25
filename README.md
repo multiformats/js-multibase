@@ -22,10 +22,10 @@ js-multibase
 - [Usage](#usage)
   - [Example](#example)
 - [API](#api)
-  - [`multibase` - Prefixes an encoded buffer with its multibase code](#multibase---prefixes-an-encoded-buffer-with-its-multibase-code)
-  - [`multibase.encode` - Encodes a buffer into one of the supported encodings, prefixing it with the multibase code](#multibaseencode---encodes-a-buffer-into-one-of-the-supported-encodings-prefixing-it-with-the-multibase-code)
-  - [`multibase.decode` - Decodes a buffer or string](#multibasedecode---decodes-a-buffer-or-string)
-  - [`multibase.isEncoded` - Checks if buffer or string is encoded](#multibaseisencoded---checks-if-buffer-or-string-is-encoded)
+  - [`multibase` - Prefixes an encoded Uint8Array with its multibase code](#multibase---prefixes-an-encoded-Uint8Array-with-its-multibase-code)
+  - [`multibase.encode` - Encodes Uint8Array into one of the supported encodings, prefixing it with the multibase code](#multibaseencode---encodes-Uint8Array-into-one-of-the-supported-encodings-prefixing-it-with-the-multibase-code)
+  - [`multibase.decode` - Decodes Uint8Array or string](#multibasedecode---decodes-Uint8Array-or-string)
+  - [`multibase.isEncoded` - Checks if Uint8Array or string is encoded](#multibaseisencoded---checks-if-Uint8Array-or-string-is-encoded)
   - [`multibase.names` - Supported base encoding names](#multibasenames)
   - [`multibase.codes` - Supported base encoding codes](#multibasecodes)
   - [Supported Encodings, see `src/constants.js`](#supported-encodings-see-srcconstantsjs)
@@ -60,12 +60,11 @@ Loading this module through a script tag will make the ```Multibase``` obj avail
 ### Example
 
 ```JavaScript
-const { Buffer } = require('buffer')
 const multibase = require('multibase')
 
-const encodedBuf = multibase.encode('base58btc', new Buffer('hey, how is it going'))
+const bytes = multibase.encode('base58btc', new TextEncoder().encode('hey, how is it going'))
 
-const decodedBuf = multibase.decode(encodedBuf)
+const decodedBuf = multibase.decode(bytes)
 console.log(decodedBuf.toString())
 // hey, how is it going
 ```
@@ -73,28 +72,28 @@ console.log(decodedBuf.toString())
 ## API
 https://multiformats.github.io/js-multibase/
 
-#### `multibase` - Prefixes an encoded buffer with its multibase code
+#### `multibase` - Prefixes an encoded Uint8Array with its multibase code
 
 ```
-const multibased = multibase(<nameOrCode>, encodedBuf)
+const multibased = multibase(<nameOrCode>, encodedBytes)
 ```
 
-#### `multibase.encode` - Encodes a buffer into one of the supported encodings, prefixing it with the multibase code
+#### `multibase.encode` - Encodes Uint8Array into one of the supported encodings, prefixing it with the multibase code
 
 ```JavaScript
-const encodedBuf = multibase.encode(<nameOrCode>, <buf>)
+const encodedBuf = multibase.encode(<nameOrCode>, <bytes>)
 ```
 
-#### `multibase.decode` - Decodes a buffer or string
+#### `multibase.decode` - Decodes Uint8Array or string
 
 ```JavaScript
 const decodedBuf = multibase.decode(bufOrString)
 ```
 
-#### `multibase.isEncoded` - Checks if buffer or string is encoded
+#### `multibase.isEncoded` - Checks if Uint8Array or string is encoded
 
 ```JavaScript
-const value = multibase.isEncoded(bufOrString)
+const value = multibase.isEncoded(bytesOrString)
 // value is the name of the encoding if it is encoded, false otherwise
 ```
 
@@ -105,7 +104,7 @@ const value = multibase.encoding(nameOrCode)
 // value is an instance of the corresponding `Base`
 ```
 
-#### `multibase.encodingFromData` - Get the encoding from data either a `string` or `Buffer`
+#### `multibase.encodingFromData` - Get the encoding from data either a `string` or `Uint8Array`
 
 ```JavaScript
 const value = multibase.encodingFromData(data)
