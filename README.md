@@ -64,7 +64,7 @@ const multibase = require('multibase')
 
 const bytes = multibase.encode('base58btc', new TextEncoder().encode('hey, how is it going'))
 
-const decodedBuf = multibase.decode(bytes)
+const decodedBytes = multibase.decode(bytes)
 console.log(decodedBuf.toString())
 // hey, how is it going
 ```
