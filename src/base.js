@@ -1,6 +1,7 @@
 // @ts-check
 'use strict'
-const { Buffer } = require('buffer')
+
+const { encodeText } = require('./util')
 
 /**
  * @typedef {Object} Codec
@@ -20,7 +21,7 @@ class Base {
   constructor (name, code, implementation, alphabet) {
     this.name = name
     this.code = code
-    this.codeBuf = Buffer.from(this.code)
+    this.codeBuf = encodeText(this.code)
     this.alphabet = alphabet
     this.engine = implementation(alphabet)
   }

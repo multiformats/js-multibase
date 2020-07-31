@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 'use strict'
 
-const { Buffer } = require('buffer')
+const { decodeText, encodeText } = require('../src/util')
 const { expect } = require('aegir/utils/chai')
 const multibase = require('../src')
 const constants = require('../src/constants.js')
@@ -37,19 +37,19 @@ describe('spec test4', () => {
     const base = constants.names[name]
 
     describe(name, () => {
-      it('should encode buffer by base name', () => {
-        const out = multibase.encode(name, Buffer.from(input))
-        expect(out.toString()).to.equal(output)
+      it('should encode Uint8Array by base name', () => {
+        const out = multibase.encode(name, encodeText(input))
+        expect(decodeText(out)).to.equal(output)
       })
 
-      it('should encode buffer by base code', () => {
-        const out = multibase.encode(base.code, Buffer.from(input))
-        expect(out.toString()).to.equal(output)
+      it('should encode Uint8Array by base code', () => {
+        const out = multibase.encode(base.code, encodeText(input))
+        expect(decodeText(out)).to.equal(output)
       })
 
       it('should decode string', () => {
         const out = multibase.decode(output)
-        expect(out.toString()).to.equal(input)
+        expect(decodeText(out)).to.equal(input)
       })
     })
   }

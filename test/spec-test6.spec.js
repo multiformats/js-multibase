@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 'use strict'
 
+const { decodeText } = require('../src/util')
 const { expect } = require('aegir/utils/chai')
 const multibase = require('../src')
 const input = 'hello world'
@@ -24,7 +25,7 @@ describe('spec test6', () => {
     describe(name, () => {
       it('should decode string', () => {
         const out = multibase.decode(output)
-        expect(out.toString()).to.equal(input)
+        expect(decodeText(out)).to.equal(input)
       })
     })
   }

@@ -6,32 +6,27 @@
  */
 'use strict'
 
-const { Buffer } = require('buffer')
 const constants = require('./constants')
-const { decodeText, asBuffer } = require('./util')
+const { encodeText, decodeText, concat } = require('./util')
 
 /** @typedef {import("./base")} Base */
 
 /**
- * Create a new buffer with the multibase varint+code.
+ * Create a new Uint8Array with the multibase varint+code.
  *
  * @param {string|number} nameOrCode - The multibase name or code number.
  * @param {Uint8Array} buf - The data to be prefixed with multibase.
- * @returns {Buffer}
+ * @returns {Uint8Array}
  * @throws {Error} Will throw if the encoding is not supported
  */
 function multibase (nameOrCode, buf) {
   if (!buf) {
-    throw new Error('requires an encoded buffer')
+    throw new Error('requires an encoded Uint8Array')
   }
   const { name, codeBuf } = encoding(nameOrCode)
   validEncode(name, buf)
 
-  const buffer = Buffer.alloc(codeBuf.length + buf.length)
-  buffer.set(codeBuf, 0)
-  buffer.set(buf, codeBuf.length)
-
-  return buffer
+  return concat([codeBuf, buf], codeBuf.length + buf.length)
 }
 
 /**
@@ -39,14 +34,15 @@ function multibase (nameOrCode, buf) {
  *
  * @param {string|number} nameOrCode - The multibase name or code number.
  * @param {Uint8Array} buf - The data to be encoded.
- * @returns {Buffer}
+ * @returns {Uint8Array}
  * @throws {Error} Will throw if the encoding is not supported
  *
  */
 function encode (nameOrCode, buf) {
   const enc = encoding(nameOrCode)
+  const data = encodeText(enc.encode(buf))
 
-  return Buffer.concat([enc.codeBuf, Buffer.from(enc.encode(buf))])
+  return concat([enc.codeBuf, data], enc.codeBuf.length + data.length)
 }
 
 /**
@@ -54,12 +50,12 @@ function encode (nameOrCode, buf) {
  * returns the decoded buffer
  *
  * @param {Uint8Array|string} data
- * @returns {Buffer}
+ * @returns {Uint8Array}
  * @throws {Error} Will throw if the encoding is not supported
  *
  */
 function decode (data) {
-  if (ArrayBuffer.isView(data)) {
+  if (data instanceof Uint8Array) {
     data = decodeText(data)
   }
   const prefix = data[0]
@@ -69,7 +65,7 @@ function decode (data) {
     data = data.toLowerCase()
   }
   const enc = encoding(data[0])
-  return asBuffer(enc.decode(data.substring(1)))
+  return enc.decode(data.substring(1))
 }
 
 /**

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 'use strict'
 
-const { Buffer } = require('buffer')
+const { decodeText, encodeText } = require('../src/util')
 const { expect } = require('aegir/utils/chai')
 const multibase = require('../src')
 const constants = require('../src/constants.js')
@@ -37,33 +37,33 @@ describe('spec test1', () => {
     const base = constants.names[name]
 
     describe(name, () => {
-      it('should encode buffer by base name', () => {
-        const out = multibase.encode(name, Buffer.from(input))
-        expect(out.toString()).to.equal(output)
+      it('should encode Uint8Array by base name', () => {
+        const out = multibase.encode(name, encodeText(input))
+        expect(decodeText(out)).to.equal(output)
       })
 
-      it('should encode buffer by base code', () => {
-        const out = multibase.encode(base.code, Buffer.from(input))
-        expect(out.toString()).to.equal(output)
+      it('should encode Uint8Array by base code', () => {
+        const out = multibase.encode(base.code, encodeText(input))
+        expect(decodeText(out)).to.equal(output)
       })
 
       it('should decode string', () => {
         const out = multibase.decode(output)
-        expect(out.toString()).to.equal(input)
+        expect(decodeText(out)).to.equal(input)
       })
 
-      it('should prefix encoded buffer', () => {
+      it('should prefix encoded Uint8Array', () => {
         const base = constants.names[name]
-        const data = base.encode(Buffer.from(input))
+        const data = base.encode(encodeText(input))
 
-        expect(multibase(name, Buffer.from(data)).toString()).to.equal(output)
+        expect(decodeText(multibase(name, encodeText(data)))).to.equal(output)
       })
 
       it('should fail decode with invalid char', function () {
         if (name === 'identity') {
           return this.skip()
         }
-        const nonEncodedBuf = Buffer.from(base.code + '^!@$%!#$%@#y')
+        const nonEncodedBuf = encodeText(base.code + '^!@$%!#$%@#y')
         expect(() => {
           multibase.decode(nonEncodedBuf)
         }).to.throw(Error, 'invalid character \'^\' in \'^!@$%!#$%@#y\'')
