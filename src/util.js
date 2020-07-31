@@ -1,7 +1,6 @@
 // @ts-check
 'use strict'
 
-const { Buffer } = require('buffer')
 const { TextEncoder, TextDecoder } = require('web-encoding')
 
 const textDecoder = new TextDecoder()
@@ -19,10 +18,26 @@ const textEncoder = new TextEncoder()
 const encodeText = (text) => textEncoder.encode(text)
 
 /**
- * @param {ArrayBufferView} bytes
- * @returns {Buffer}
+ * Returns a new Uint8Array created by concatenating the passed Arrays
+ *
+ * @param {Array<ArrayLike<Number>>} arrs
+ * @param {Number} [length]
+ * @returns {Uint8Array}
  */
-const asBuffer = ({ buffer, byteLength, byteOffset }) =>
-  Buffer.from(buffer, byteOffset, byteLength)
+function concat (arrs, length) {
+  if (!length) {
+    length = arrs.reduce((acc, curr) => acc + curr.length, 0)
+  }
 
-module.exports = { decodeText, encodeText, asBuffer }
+  const output = new Uint8Array(length)
+  let offset = 0
+
+  for (const arr of arrs) {
+    output.set(arr, offset)
+    offset += arr.length
+  }
+
+  return output
+}
+
+module.exports = { decodeText, encodeText, concat }

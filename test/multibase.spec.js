@@ -2,8 +2,7 @@
 'use strict'
 
 const { expect } = require('aegir/utils/chai')
-const { Buffer } = require('buffer')
-const { encodeText } = require('../src/util')
+const { encodeText, decodeText } = require('../src/util')
 const multibase = require('../src')
 const constants = require('../src/constants.js')
 
@@ -11,8 +10,8 @@ const unsupportedBases = []
 
 const supportedBases = [
 
-  ['base16', Buffer.from([0x01]).toString(), 'f01'],
-  ['base16', Buffer.from([15]).toString(), 'f0f'],
+  ['base16', decodeText(Uint8Array.from([0x01])), 'f01'],
+  ['base16', decodeText(Uint8Array.from([15])), 'f0f'],
   ['base16', 'f', 'f66'],
   ['base16', 'fo', 'f666f'],
   ['base16', 'foo', 'f666f6f'],
@@ -85,7 +84,6 @@ const supportedBases = [
 ]
 
 const they = (label, def) => {
-  it(`${label} (Buffer)`, def.bind(null, Buffer.from))
   it(`${label} (Uint8Array)`, def.bind(null, encodeText))
 }
 
@@ -120,27 +118,27 @@ describe('multibase', () => {
     const output = elements[2]
     const base = constants.names[name]
     describe(name, () => {
-      they('adds multibase code to valid encoded buffer, by name', (encode) => {
+      they('adds multibase code to valid encoded Uint8Array, by name', (encode) => {
         if (typeof input === 'string') {
           const buf = encode(input)
           const encodedBuf = encode(base.encode(buf))
           const multibasedBuf = multibase(base.name, encodedBuf)
-          expect(multibasedBuf.toString()).to.equal(output)
+          expect(decodeText(multibasedBuf)).to.equal(output)
         } else {
           const encodedBuf = encode(base.encode(input))
           const multibasedBuf = multibase(base.name, encodedBuf)
-          expect(multibasedBuf.toString()).to.equal(output)
+          expect(decodeText(multibasedBuf)).to.equal(output)
         }
       })
 
-      they('adds multibase code to valid encoded buffer, by code', (encode) => {
+      they('adds multibase code to valid encoded Uint8Array, by code', (encode) => {
         const buf = encode(input)
         const encodedBuf = encode(base.encode(buf))
         const multibasedBuf = multibase(base.code, encodedBuf)
-        expect(multibasedBuf.toString()).to.equal(output)
+        expect(decodeText(multibasedBuf)).to.equal(output)
       })
 
-      they('fails to add multibase code to invalid encoded buffer', (encode) => {
+      they('fails to add multibase code to invalid encoded Uint8Array', (encode) => {
         const nonEncodedBuf = encode('^!@$%!#$%@#y')
         expect(() => {
           multibase(base.name, nonEncodedBuf)
@@ -152,7 +150,7 @@ describe('multibase', () => {
         expect(name).to.equal(base.name)
       })
 
-      they('isEncoded buffer', (encode) => {
+      they('isEncoded Uint8Array', (encode) => {
         const multibasedStr = encode(output)
         const name = multibase.isEncoded(multibasedStr)
         expect(name).to.equal(base.name)
@@ -167,10 +165,10 @@ describe('multibase.encode ', () => {
     const input = elements[1]
     const output = elements[2]
     describe(name, () => {
-      they('encodes a buffer', (encode) => {
+      they('encodes a Uint8Array', (encode) => {
         const buf = encode(input)
         const multibasedBuf = multibase.encode(name, buf)
-        expect(multibasedBuf.toString()).to.equal(output)
+        expect(decodeText(multibasedBuf)).to.equal(output)
       })
     })
   }
@@ -180,7 +178,7 @@ describe('multibase.encode ', () => {
     const decoded = multibase.decode(encodedStr)
 
     const encoded = multibase.encode('c', decoded)
-    expect(encodedStr).to.be.eq(encoded.toString())
+    expect(encodedStr).to.be.eq(decodeText(encoded))
   })
 })
 
@@ -193,13 +191,13 @@ describe('multibase.decode', () => {
       it('decodes a string', () => {
         const multibasedStr = output
         const buf = multibase.decode(multibasedStr)
-        expect(buf).to.eql(Buffer.from(input))
+        expect(buf).to.eql(encodeText(input))
       })
 
-      they('decodes a buffer', (encode) => {
+      they('decodes a Uint8Array', (encode) => {
         const multibasedBuf = encode(output)
         const buf = multibase.decode(multibasedBuf)
-        expect(buf).to.eql(Buffer.from(input))
+        expect(buf).to.eql(encodeText(input))
       })
     })
   }
@@ -241,7 +239,7 @@ describe('multibase.codes', () => {
 })
 
 describe('multibase.isEncoded', () => {
-  it('should not throw for non string/buffer input', () => {
+  it('should not throw for non String/Uint8Array input', () => {
     const invalidInputs = [
       null,
       undefined,
