@@ -1,6 +1,6 @@
 {
   "name": "multibase",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "JavaScript implementation of the multibase specification",
   "keywords": [
     "IPFS",
@@ -54,13 +54,13 @@
     "Oli Evans <oli@tableflip.io>",
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
     "Alan Shaw <alan.shaw@protocol.ai>",
-    "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ <victorbjelkholm@gmail.com>",
-    "Bora M. Alper <boramalper@gmail.com>",
     "Irakli Gozalishvili <contact@gozala.io>",
-    "Richard Littauer <richard.littauer@gmail.com>",
-    "achingbrain <alex@achingbrain.net>",
-    "theobat <theophile.batoz@gmail.com>",
+    "Alex Potsides <alex@achingbrain.net>",
+    "victorbjelkholm <victorbjelkholm@gmail.com>",
+    "Bora M. Alper <boramalper@gmail.com>",
+    "Carson Farmer <carson.farmer@gmail.com>",
     "Henrique Dias <hacdias@gmail.com>",
-    "Carson Farmer <carson.farmer@gmail.com>"
+    "Richard Littauer <richard.littauer@gmail.com>",
+    "theobat <theophile.batoz@gmail.com>"
   ]
 }
