@@ -21,14 +21,10 @@ const encodeText = (text) => textEncoder.encode(text)
  * Returns a new Uint8Array created by concatenating the passed Arrays
  *
  * @param {Array<ArrayLike<Number>>} arrs
- * @param {Number} [length]
+ * @param {Number} length
  * @returns {Uint8Array}
  */
 function concat (arrs, length) {
-  if (!length) {
-    length = arrs.reduce((acc, curr) => acc + curr.length, 0)
-  }
-
   const output = new Uint8Array(length)
   let offset = 0
 
