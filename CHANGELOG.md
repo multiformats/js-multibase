@@ -1,3 +1,18 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/multiformats/js-multibase/compare/v2.0.0...v3.0.0) (2020-07-31)
+
+
+### Bug Fixes
+
+* return Uint8Arrays ([#63](https://github.com/multiformats/js-multibase/issues/63)) ([5e38957](https://github.com/multiformats/js-multibase/commit/5e38957))
+
+
+### BREAKING CHANGES
+
+* - node `Buffer`s are not returned any more, only `Uint8Array`s
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/multiformats/js-multibase/compare/v1.0.1...v2.0.0) (2020-07-24)
 
