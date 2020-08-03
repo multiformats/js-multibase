@@ -34,7 +34,7 @@
     "coverage-publish": "aegir coverage publish"
   },
   "dependencies": {
-    "base-x": "^3.0.8",
+    "base-x": "achingbrain/base-x#feature/return-uint8arrays",
     "web-encoding": "^1.0.2"
   },
   "devDependencies": {
