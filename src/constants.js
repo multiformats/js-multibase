@@ -1,7 +1,7 @@
 // @ts-check
 'use strict'
 
-const baseX = require('base-x')
+const baseX = require('@multiformats/base-x')
 const Base = require('./base.js')
 const rfc4648 = require('./rfc4648')
 const { decodeText, encodeText } = require('./util')
