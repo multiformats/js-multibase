@@ -1,6 +1,6 @@
-// @ts-check
 'use strict'
 
+// @ts-ignore
 const { TextEncoder, TextDecoder } = require('web-encoding')
 
 const textDecoder = new TextDecoder()
@@ -20,8 +20,8 @@ const encodeText = (text) => textEncoder.encode(text)
 /**
  * Returns a new Uint8Array created by concatenating the passed Arrays
  *
- * @param {Array<ArrayLike<Number>>} arrs
- * @param {Number} length
+ * @param {Array<ArrayLike<number>>} arrs
+ * @param {number} length
  * @returns {Uint8Array}
  */
 function concat (arrs, length) {
