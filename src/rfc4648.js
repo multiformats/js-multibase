@@ -1,7 +1,6 @@
-// @ts-check
 'use strict'
 
-/** @typedef {import('./base').CodecFactory} CodecFactory */
+/** @typedef {import('./types').CodecFactory} CodecFactory */
 
 /**
  * @param {string} string
@@ -96,10 +95,12 @@ const encode = (data, alphabet, bitsPerChar) => {
 }
 
 /**
+ * RFC4648 Factory
+ *
  * @param {number} bitsPerChar
  * @returns {CodecFactory}
  */
-module.exports = (bitsPerChar) => (alphabet) => {
+const rfc4648 = (bitsPerChar) => (alphabet) => {
   return {
     /**
      * @param {Uint8Array} input
@@ -117,3 +118,5 @@ module.exports = (bitsPerChar) => (alphabet) => {
     }
   }
 }
+
+module.exports = { rfc4648 }

@@ -6,6 +6,10 @@ const { expect } = require('aegir/utils/chai')
 const multibase = require('../src')
 const constants = require('../src/constants.js')
 const input = '\x00\x00yes mani !'
+/**
+ * @typedef {import('../src/types').BaseNames} BaseNames
+ */
+/** @type {Array<[BaseNames, string]>} */
 const encoded = [
   ['identity', '\x00\x00\x00yes mani !'],
   ['base2', '0000000000000000001111001011001010111001100100000011011010110000101101110011010010010000000100001'],

@@ -1,11 +1,16 @@
-// @ts-check
 'use strict'
 
 const baseX = require('@multiformats/base-x')
 const Base = require('./base.js')
-const rfc4648 = require('./rfc4648')
+const { rfc4648 } = require('./rfc4648')
 const { decodeText, encodeText } = require('./util')
 
+/** @typedef {import('./types').CodecFactory} CodecFactory */
+/** @typedef {import('./types').Codec} Codec */
+/** @typedef {import('./types').BaseNames} BaseNames */
+/** @typedef {import('./types').BaseCodes} BaseCodes */
+
+/** @type {CodecFactory} */
 const identity = () => {
   return {
     encode: decodeText,
@@ -14,10 +19,10 @@ const identity = () => {
 }
 
 /**
- * @typedef {import('./base').CodecFactory} CodecFactory
  *
  * name, code, implementation, alphabet
- * @type {Array<[string, string, CodecFactory, string]>}
+ *
+ * @type {Array<[BaseNames, BaseCodes, CodecFactory, string]>}
  */
 const constants = [
   ['identity', '\x00', identity, ''],
@@ -45,15 +50,17 @@ const constants = [
   ['base64urlpad', 'U', rfc4648(6), 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_=']
 ]
 
+/** @type {Record<BaseNames,Base>} */
 const names = constants.reduce((prev, tupple) => {
   prev[tupple[0]] = new Base(tupple[0], tupple[1], tupple[2], tupple[3])
   return prev
-}, {})
+}, /** @type {Record<BaseNames,Base>} */({}))
 
+/** @type {Record<BaseCodes,Base>} */
 const codes = constants.reduce((prev, tupple) => {
   prev[tupple[1]] = names[tupple[0]]
   return prev
-}, {})
+}, /** @type {Record<BaseCodes,Base>} */({}))
 
 module.exports = {
   names,

@@ -6,6 +6,11 @@ const { expect } = require('aegir/utils/chai')
 const multibase = require('../src')
 const constants = require('../src/constants.js')
 const input = 'Decentralize everything!!'
+
+/**
+ * @typedef {import('../src/types').BaseNames} BaseNames
+ */
+/** @type {Array<[BaseNames, string]>} */
 const encoded = [
   ['identity', '\x00Decentralize everything!!'],
   ['base2', '001000100011001010110001101100101011011100111010001110010011000010110110001101001011110100110010100100000011001010111011001100101011100100111100101110100011010000110100101101110011001110010000100100001'],

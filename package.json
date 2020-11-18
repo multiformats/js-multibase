@@ -35,10 +35,10 @@
   },
   "dependencies": {
     "@multiformats/base-x": "^4.0.1",
-    "web-encoding": "^1.0.2"
+    "web-encoding": "^1.0.4"
   },
   "devDependencies": {
-    "aegir": "^26.0.0",
+    "aegir": "github:ipfs/aegir#feat/ts-cmd",
     "benchmark": "^2.1.4"
   },
   "engines": {
@@ -46,7 +46,15 @@
     "npm": ">=6.0.0"
   },
   "eslintConfig": {
-    "extends": "./node_modules/aegir/src/config/eslintrc.js"
+    "extends": "ipfs"
+  },
+  "types": "./dist/src/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "src/*": [
+        "dist/src/*"
+      ]
+    }
   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
