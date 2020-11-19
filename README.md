@@ -34,7 +34,7 @@ $ npm install --save multibase
 
 ### Browser through `<script>` tag
 
-Loading this module through a script tag will make the ```Multibase``` obj available in the global namespace.
+Loading this module through a script tag will make the `Multibase` obj available in the global namespace.
 
 ```html
 <script src="https://unpkg.com/multibase/dist/index.min.js"></script>
