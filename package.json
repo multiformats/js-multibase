@@ -50,7 +50,7 @@
   },
   "types": "dist/src/index.d.ts",
   "typesVersions": {
-    "*": { "src/*": ["dist/src/*", "dist/src/*/index"] }
+    "*": { "src/*": ["dist/src/*"] }
   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
