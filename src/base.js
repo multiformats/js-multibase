@@ -3,17 +3,17 @@
 const { encodeText } = require('./util')
 
 /** @typedef {import('./types').CodecFactory} CodecFactory */
-/** @typedef {import("./types").BaseNames} BaseNames */
-/** @typedef {import("./types").BaseCodes} BaseCodes */
+/** @typedef {import("./types").BaseName} BaseName */
+/** @typedef {import("./types").BaseCode} BaseCode */
 
 /**
- * Class
+ * Class to encode/decode in the supported Bases
  *
  */
 class Base {
   /**
-   * @param {BaseNames} name
-   * @param {BaseCodes} code
+   * @param {BaseName} name
+   * @param {BaseCode} code
    * @param {CodecFactory} factory
    * @param {string} alphabet
    */

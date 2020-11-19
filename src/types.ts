@@ -1,7 +1,7 @@
 /**
  * - Codes of the supported encodings
  */
-export type BaseCodes =
+export type BaseCode =
     | '\x00'
     | '0'
     | '7'
@@ -29,7 +29,7 @@ export type BaseCodes =
 /**
  * - Names of the supported encodings
  */
-export type BaseNames =
+export type BaseName =
     | 'identity'
     | 'base2'
     | 'base8'
@@ -54,7 +54,7 @@ export type BaseNames =
     | 'base64url'
     | 'base64urlpad';
 
-export type BaseNamesCodes = BaseCodes | BaseNames;
+export type BaseNameOrCode = BaseCode | BaseName;
 export type Codec = {
     encode: (buffer: Uint8Array) => string;
     decode: (hash: string) => Uint8Array;

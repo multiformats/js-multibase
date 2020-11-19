@@ -1,7 +1,6 @@
 /* eslint-env mocha */
 'use strict'
 
-// @ts-ignore
 const { expect } = require('aegir/utils/chai')
 const { encodeText, decodeText } = require('../src/util')
 const multibase = require('../src')
@@ -10,9 +9,10 @@ const constants = require('../src/constants.js')
 const unsupportedBases = []
 
 /**
- * @typedef {import('../src/types').BaseNames} BaseNames
+ * @typedef {import('../src/types').BaseName} BaseName
  */
-/** @type {Array<[BaseNames, string, string]>} */
+
+/** @type {Array<[BaseName, string, string]>} */
 const supportedBases = [
 
   ['base16', decodeText(Uint8Array.from([0x01])), 'f01'],

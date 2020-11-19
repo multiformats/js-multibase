@@ -8,9 +8,9 @@ const constants = require('../src/constants.js')
 const input = 'hello world'
 
 /**
- * @typedef {import('../src/types').BaseNames} BaseNames
+ * @typedef {import('../src/types').BaseName} BaseName
  */
-/** @type {Array<[BaseNames, string]>} */
+/** @type {Array<[BaseName, string]>} */
 const encoded = [
   ['identity', '\x00hello world'],
   ['base2', '00110100001100101011011000110110001101111001000000111011101101111011100100110110001100100'],

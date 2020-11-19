@@ -7,9 +7,9 @@ const multibase = require('../src')
 const constants = require('../src/constants.js')
 const input = '\x00yes mani !'
 /**
- * @typedef {import('../src/types').BaseNames} BaseNames
+ * @typedef {import('../src/types').BaseName} BaseName
  */
-/** @type {Array<[BaseNames, string]>} */
+/** @type {Array<[BaseName, string]>} */
 const encoded = [
   ['identity', '\x00\x00yes mani !'],
   ['base2', '00000000001111001011001010111001100100000011011010110000101101110011010010010000000100001'],

@@ -7,8 +7,8 @@ const { decodeText, encodeText } = require('./util')
 
 /** @typedef {import('./types').CodecFactory} CodecFactory */
 /** @typedef {import('./types').Codec} Codec */
-/** @typedef {import('./types').BaseNames} BaseNames */
-/** @typedef {import('./types').BaseCodes} BaseCodes */
+/** @typedef {import('./types').BaseName} BaseName */
+/** @typedef {import('./types').BaseCode} BaseCode */
 
 /** @type {CodecFactory} */
 const identity = () => {
@@ -22,7 +22,7 @@ const identity = () => {
  *
  * name, code, implementation, alphabet
  *
- * @type {Array<[BaseNames, BaseCodes, CodecFactory, string]>}
+ * @type {Array<[BaseName, BaseCode, CodecFactory, string]>}
  */
 const constants = [
   ['identity', '\x00', identity, ''],
@@ -50,17 +50,17 @@ const constants = [
   ['base64urlpad', 'U', rfc4648(6), 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_=']
 ]
 
-/** @type {Record<BaseNames,Base>} */
+/** @type {Record<BaseName,Base>} */
 const names = constants.reduce((prev, tupple) => {
   prev[tupple[0]] = new Base(tupple[0], tupple[1], tupple[2], tupple[3])
   return prev
-}, /** @type {Record<BaseNames,Base>} */({}))
+}, /** @type {Record<BaseName,Base>} */({}))
 
-/** @type {Record<BaseCodes,Base>} */
+/** @type {Record<BaseCode,Base>} */
 const codes = constants.reduce((prev, tupple) => {
   prev[tupple[1]] = names[tupple[0]]
   return prev
-}, /** @type {Record<BaseCodes,Base>} */({}))
+}, /** @type {Record<BaseCode,Base>} */({}))
 
 module.exports = {
   names,

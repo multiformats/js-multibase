@@ -48,13 +48,8 @@
   "eslintConfig": {
     "extends": "ipfs"
   },
-  "types": "./dist/src/index.d.ts",
   "typesVersions": {
-    "*": {
-      "src/*": [
-        "dist/src/*"
-      ]
-    }
+    "*": { "src/*": ["dist/src/*", "dist/src/*/index"] }
   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
