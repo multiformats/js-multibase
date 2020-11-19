@@ -48,6 +48,7 @@
   "eslintConfig": {
     "extends": "ipfs"
   },
+  "types": "dist/src/index.d.ts",
   "typesVersions": {
     "*": { "src/*": ["dist/src/*", "dist/src/*/index"] }
   },
