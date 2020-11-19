@@ -1,4 +1,3 @@
-// @ts-check
 /**
  * Implementation of the [multibase](https://github.com/multiformats/multibase) specification.
  *
