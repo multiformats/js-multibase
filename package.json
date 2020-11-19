@@ -38,7 +38,7 @@
     "web-encoding": "^1.0.4"
   },
   "devDependencies": {
-    "aegir": "github:ipfs/aegir#feat/ts-cmd",
+    "aegir": "github:ipfs/aegir#fix/ts-docs-update",
     "benchmark": "^2.1.4"
   },
   "engines": {
