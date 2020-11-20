@@ -8,6 +8,11 @@ const constants = require('../src/constants.js')
 
 const unsupportedBases = []
 
+/**
+ * @typedef {import('../src/types').BaseName} BaseName
+ */
+
+/** @type {Array<[BaseName, string, string]>} */
 const supportedBases = [
 
   ['base16', decodeText(Uint8Array.from([0x01])), 'f01'],
@@ -95,18 +100,21 @@ describe('multibase', () => {
 
     it('fails on no buf', () => {
       expect(() => {
+        // @ts-expect-error
         multibase('base16')
       }).to.throw(Error)
     })
 
     they('fails on non supported name', (encode) => {
       expect(() => {
+        // @ts-expect-error
         multibase('base1001', encode('meh'))
       }).to.throw(Error)
     })
 
     they('fails on non supported code', (encode) => {
       expect(() => {
+        // @ts-expect-error
         multibase('6', encode('meh'))
       }).to.throw(Error)
     })
@@ -253,7 +261,9 @@ describe('multibase.isEncoded', () => {
     ]
 
     invalidInputs.forEach(input => {
+      // @ts-ignore
       expect(() => multibase.isEncoded(input)).to.not.throw()
+      // @ts-ignore
       expect(multibase.isEncoded(input)).to.be.false()
     })
   })

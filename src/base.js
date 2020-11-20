@@ -1,29 +1,28 @@
-// @ts-check
 'use strict'
 
 const { encodeText } = require('./util')
 
-/**
- * @typedef {Object} Codec
- * @property {function(Uint8Array):string} encode
- * @property {function(string):Uint8Array} decode
- *
- * @typedef {function(string):Codec} CodecFactory
- */
+/** @typedef {import('./types').CodecFactory} CodecFactory */
+/** @typedef {import("./types").BaseName} BaseName */
+/** @typedef {import("./types").BaseCode} BaseCode */
 
+/**
+ * Class to encode/decode in the supported Bases
+ *
+ */
 class Base {
   /**
-   * @param {string} name
-   * @param {string} code
-   * @param {CodecFactory} implementation
+   * @param {BaseName} name
+   * @param {BaseCode} code
+   * @param {CodecFactory} factory
    * @param {string} alphabet
    */
-  constructor (name, code, implementation, alphabet) {
+  constructor (name, code, factory, alphabet) {
     this.name = name
     this.code = code
     this.codeBuf = encodeText(this.code)
     this.alphabet = alphabet
-    this.engine = implementation(alphabet)
+    this.codec = factory(alphabet)
   }
 
   /**
@@ -31,7 +30,7 @@ class Base {
    * @returns {string}
    */
   encode (buf) {
-    return this.engine.encode(buf)
+    return this.codec.encode(buf)
   }
 
   /**
@@ -44,7 +43,7 @@ class Base {
         throw new Error(`invalid character '${char}' in '${string}'`)
       }
     }
-    return this.engine.decode(string)
+    return this.codec.decode(string)
   }
 }
 
