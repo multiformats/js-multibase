@@ -1,3 +1,12 @@
+# [3.1.0](https://github.com/multiformats/js-multibase/compare/v3.0.1...v3.1.0) (2020-11-20)
+
+
+### Features
+
+* add ts types ([#72](https://github.com/multiformats/js-multibase/issues/72)) ([6e083f0](https://github.com/multiformats/js-multibase/commit/6e083f0353835c3598dfa2e61a86016a8ec85f75))
+
+
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/multiformats/js-multibase/compare/v3.0.0...v3.0.1) (2020-09-18)
 
