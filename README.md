@@ -1,9 +1,9 @@
 js-multibase <!-- omit in toc -->
 ============
 
-[![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](https://protocol.ai)
-[![](https://img.shields.io/badge/project-multiformats-blue.svg?style=flat-square)](https://github.com/multiformats/multiformats)
-[![](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](https://webchat.freenode.net/?channels=%23ipfs)
+[![pl](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](https://protocol.ai)
+[![project](https://img.shields.io/badge/project-multiformats-blue.svg?style=flat-square)](https://github.com/multiformats/multiformats)
+[![irc](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](https://webchat.freenode.net/?channels=%23ipfs)
 [![codecov](https://img.shields.io/codecov/c/github/multiformats/js-multibase.svg?style=flat-square)](https://codecov.io/gh/multiformats/js-multibase)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/multiformats/js-multibase/ci?label=ci&style=flat-square)](https://github.com/multiformats/js-multibase/actions?query=branch%3Amaster+workflow%3Aci+)
 
