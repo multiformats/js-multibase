@@ -38,7 +38,7 @@
     "web-encoding": "^1.0.4"
   },
   "devDependencies": {
-    "aegir": "^29.0.1",
+    "aegir": "^30.3.0",
     "benchmark": "^2.1.4"
   },
   "engines": {
