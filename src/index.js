@@ -113,9 +113,13 @@ function validEncode (name, buf) {
  * @throws {Error} Will throw if the encoding is not supported
  */
 function encoding (nameOrCode) {
+  // @ts-ignore
   if (constants.names[nameOrCode]) {
+    // @ts-ignore
     return constants.names[nameOrCode]
+  // @ts-ignore
   } else if (constants.codes[nameOrCode]) {
+    // @ts-ignore
     return constants.codes[nameOrCode]
   } else {
     throw new Error(`Unsupported encoding: ${nameOrCode}`)

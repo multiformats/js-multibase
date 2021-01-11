@@ -6,6 +6,7 @@ const { encodeText, decodeText } = require('../src/util')
 const multibase = require('../src')
 const constants = require('../src/constants.js')
 
+/** @type {Array<[BaseName, string, string]>} */
 const unsupportedBases = []
 
 /**
@@ -88,6 +89,10 @@ const supportedBases = [
   ['base64urlpad', '÷ïÿ🥰÷ïÿ😎🥶🤯', 'Uw7fDr8O_8J-lsMO3w6_Dv_CfmI7wn6W28J-krw==']
 ]
 
+/**
+ * @param {string} label
+ * @param {(encodeText:(text: string) => Uint8Array) => void} def
+ */
 const they = (label, def) => {
   it(`${label} (Uint8Array)`, def.bind(null, encodeText))
 }

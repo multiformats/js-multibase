@@ -10,6 +10,7 @@
  */
 const decode = (string, alphabet, bitsPerChar) => {
   // Build the character lookup table:
+  /** @type {Record<string, number>} */
   const codes = {}
   for (let i = 0; i < alphabet.length; ++i) {
     codes[alphabet[i]] = i

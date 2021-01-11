@@ -24,7 +24,7 @@ export type BaseCode =
     | 'm'
     | 'M'
     | 'u'
-    | 'U';
+    | 'U'
 
 /**
  * - Names of the supported encodings
@@ -52,11 +52,15 @@ export type BaseName =
     | 'base64'
     | 'base64pad'
     | 'base64url'
-    | 'base64urlpad';
+    | 'base64urlpad'
 
-export type BaseNameOrCode = BaseCode | BaseName;
-export type Codec = {
-    encode: (buffer: Uint8Array) => string;
-    decode: (hash: string) => Uint8Array;
-};
-export type CodecFactory = (input: string) => Codec;
+export type BaseNameOrCode = BaseCode | BaseName
+export interface Codec {
+  encode: (buffer: Uint8Array) => string
+  decode: (hash: string) => Uint8Array
+}
+export interface CodecFactory { (input: string): Codec }
+
+export type Foo = Codec & CodecFactory & {
+  someProp: string
+}
