@@ -1,3 +1,12 @@
+## [3.1.1](https://github.com/multiformats/js-multibase/compare/v3.1.0...v3.1.1) (2021-01-13)
+
+
+### Bug Fixes
+
+* update aegir and fix types ([#79](https://github.com/multiformats/js-multibase/issues/79)) ([93ab644](https://github.com/multiformats/js-multibase/commit/93ab644c6b7b239b5c87e86ed1fd5c40c58a2a8b))
+
+
+
 # [3.1.0](https://github.com/multiformats/js-multibase/compare/v3.0.1...v3.1.0) (2020-11-20)
 
 
