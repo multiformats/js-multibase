@@ -60,7 +60,3 @@ export interface Codec {
   decode: (hash: string) => Uint8Array
 }
 export interface CodecFactory { (input: string): Codec }
-
-export type Foo = Codec & CodecFactory & {
-  someProp: string
-}

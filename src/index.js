@@ -10,6 +10,7 @@ const { encodeText, decodeText, concat } = require('./util')
 /** @typedef {import('./base')} Base */
 /** @typedef {import("./types").BaseNameOrCode} BaseNameOrCode */
 /** @typedef {import("./types").BaseCode} BaseCode */
+/** @typedef {import("./types").BaseName} BaseName */
 
 /**
  * Create a new Uint8Array with the multibase varint+code.
@@ -113,14 +114,10 @@ function validEncode (name, buf) {
  * @throws {Error} Will throw if the encoding is not supported
  */
 function encoding (nameOrCode) {
-  // @ts-ignore
-  if (constants.names[nameOrCode]) {
-    // @ts-ignore
-    return constants.names[nameOrCode]
-  // @ts-ignore
-  } else if (constants.codes[nameOrCode]) {
-    // @ts-ignore
-    return constants.codes[nameOrCode]
+  if (constants.names[/** @type {BaseName} */(nameOrCode)]) {
+    return constants.names[/** @type {BaseName} */(nameOrCode)]
+  } else if (constants.codes[/** @type {BaseCode} */(nameOrCode)]) {
+    return constants.codes[/** @type {BaseCode} */(nameOrCode)]
   } else {
     throw new Error(`Unsupported encoding: ${nameOrCode}`)
   }
