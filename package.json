@@ -21,7 +21,7 @@
   "main": "src/index.js",
   "repository": "github:multiformats/js-multibase",
   "scripts": {
-    "prepare": "aegir build",
+    "prepare": "aegir build --no-bundle",
     "lint": "aegir lint",
     "test": "aegir test",
     "test:node": "aegir test -t node",
@@ -35,10 +35,10 @@
   },
   "dependencies": {
     "@multiformats/base-x": "^4.0.1",
-    "web-encoding": "^1.0.4"
+    "web-encoding": "^1.0.6"
   },
   "devDependencies": {
-    "aegir": "^29.0.1",
+    "aegir": "^30.3.0",
     "benchmark": "^2.1.4"
   },
   "engines": {
