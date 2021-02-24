@@ -26,37 +26,26 @@
     "test": "aegir test",
     "test:node": "aegir test -t node",
     "test:browser": "aegir test -t browser",
-    "docs": "aegir docs",
-    "release": "aegir release --docs",
-    "release-minor": "aegir release --type minor --docs",
-    "release-major": "aegir release --type major --docs",
-    "coverage": "aegir coverage",
-    "coverage-publish": "aegir coverage publish"
+    "release": "aegir release",
+    "release-minor": "aegir release --type minor",
+    "release-major": "aegir release --type major"
   },
   "dependencies": {
     "@multiformats/base-x": "^4.0.1",
-    "web-encoding": "^1.0.6"
+    "web-encoding": "^1.1.0"
   },
   "devDependencies": {
-    "aegir": "^30.3.0",
+    "aegir": "^31.0.0",
     "benchmark": "^2.1.4"
   },
   "engines": {
-    "node": ">=10.0.0",
+    "node": ">=14.0.0",
     "npm": ">=6.0.0"
   },
   "eslintConfig": {
     "extends": "ipfs"
   },
   "types": "dist/src/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "src/*": [
-        "dist/src/*",
-        "dist/src/*/index"
-      ]
-    }
-  },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
     "Hugo Dias <hugomrdias@gmail.com>",
