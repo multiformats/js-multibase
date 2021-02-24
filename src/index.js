@@ -114,9 +114,9 @@ function validEncode (name, buf) {
  * @throws {Error} Will throw if the encoding is not supported
  */
 function encoding (nameOrCode) {
-  if (constants.names[/** @type {BaseName} */(nameOrCode)]) {
+  if (constants.names.hasOwnProperty(/** @type {BaseName} */(nameOrCode))) {
     return constants.names[/** @type {BaseName} */(nameOrCode)]
-  } else if (constants.codes[/** @type {BaseCode} */(nameOrCode)]) {
+  } else if (constants.codes.hasOwnProperty(/** @type {BaseCode} */(nameOrCode))) {
     return constants.codes[/** @type {BaseCode} */(nameOrCode)]
   } else {
     throw new Error(`Unsupported encoding: ${nameOrCode}`)
