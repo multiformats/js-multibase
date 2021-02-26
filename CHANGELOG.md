@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/multiformats/js-multibase/compare/v3.1.2...v4.0.0) (2021-02-26)
+
+
+### Features
+
+* remove typeVersions and update aegir to v31 ([#85](https://github.com/multiformats/js-multibase/issues/85)) ([e3d4811](https://github.com/multiformats/js-multibase/commit/e3d48114083cbc6f0f3606e41c0e3e4b743e88f7))
+
+
+### BREAKING CHANGES
+
+* No longer supports deep type imports only from the entrypoint.
+
+
+
 ## [3.1.2](https://github.com/multiformats/js-multibase/compare/v3.1.1...v3.1.2) (2021-02-26)
 
 
