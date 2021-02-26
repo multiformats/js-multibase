@@ -1,6 +1,6 @@
 {
   "name": "multibase",
-  "version": "3.1.2",
+  "version": "4.0.0",
   "description": "JavaScript implementation of the multibase specification",
   "keywords": [
     "IPFS",
@@ -47,8 +47,8 @@
   },
   "types": "dist/src/index.d.ts",
   "contributors": [
-    "David Dias <daviddias.p@gmail.com>",
     "Hugo Dias <hugomrdias@gmail.com>",
+    "David Dias <daviddias.p@gmail.com>",
     "Oli Evans <oli@tableflip.io>",
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
     "Volker Mische <volker.mische@gmail.com>",
