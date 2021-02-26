@@ -1,3 +1,12 @@
+## [3.1.2](https://github.com/multiformats/js-multibase/compare/v3.1.1...v3.1.2) (2021-02-26)
+
+
+### Bug Fixes
+
+* fix incompatibility with zii via [@rvagg](https://github.com/rvagg)'s fix ([#84](https://github.com/multiformats/js-multibase/issues/84)) ([d5b670f](https://github.com/multiformats/js-multibase/commit/d5b670fbaab941a47f6ece1ff39870bfa394065e))
+
+
+
 ## [3.1.1](https://github.com/multiformats/js-multibase/compare/v3.1.0...v3.1.1) (2021-01-13)
 
 
