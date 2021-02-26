@@ -1,3 +1,7 @@
+## [4.0.1](https://github.com/multiformats/js-multibase/compare/v4.0.0...v4.0.1) (2021-02-26)
+
+
+
 # [4.0.0](https://github.com/multiformats/js-multibase/compare/v3.1.2...v4.0.0) (2021-02-26)
 
 
