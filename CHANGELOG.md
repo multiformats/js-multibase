@@ -1,3 +1,12 @@
+## [4.0.2](https://github.com/multiformats/js-multibase/compare/v4.0.1...v4.0.2) (2021-03-03)
+
+
+### Bug Fixes
+
+* revert node 14 to node 12 ([f2fd464](https://github.com/multiformats/js-multibase/commit/f2fd46444e908124397c5c2c5cf6fb4a7acc46df))
+
+
+
 ## [4.0.1](https://github.com/multiformats/js-multibase/compare/v4.0.0...v4.0.1) (2021-02-26)
 
 
