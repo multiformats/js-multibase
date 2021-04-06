@@ -1,8 +1,5 @@
 'use strict'
 
-// @ts-ignore
-const { TextEncoder, TextDecoder } = require('web-encoding')
-
 const textDecoder = new TextDecoder()
 /**
  * @param {ArrayBufferView|ArrayBuffer} bytes
