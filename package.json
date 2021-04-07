@@ -1,6 +1,6 @@
 {
   "name": "multibase",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "JavaScript implementation of the multibase specification",
   "keywords": [
     "IPFS",
@@ -50,9 +50,9 @@
     "David Dias <daviddias.p@gmail.com>",
     "Oli Evans <oli@tableflip.io>",
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
+    "Alex Potsides <alex@achingbrain.net>",
     "Volker Mische <volker.mische@gmail.com>",
     "Alan Shaw <alan.shaw@protocol.ai>",
-    "Alex Potsides <alex@achingbrain.net>",
     "Irakli Gozalishvili <contact@gozala.io>",
     "victorbjelkholm <victorbjelkholm@gmail.com>",
     "theobat <theophile.batoz@gmail.com>",
