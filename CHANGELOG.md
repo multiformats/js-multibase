@@ -1,3 +1,12 @@
+## [4.0.4](https://github.com/multiformats/js-multibase/compare/v4.0.3...v4.0.4) (2021-04-07)
+
+
+### Bug Fixes
+
+* return basename or boolean from isEncoded ([#91](https://github.com/multiformats/js-multibase/issues/91)) ([5f9ebe8](https://github.com/multiformats/js-multibase/commit/5f9ebe8b2cc3c9c7362b3ede23ac99ff02f42423))
+
+
+
 ## [4.0.3](https://github.com/multiformats/js-multibase/compare/v4.0.2...v4.0.3) (2021-04-06)
 
 
