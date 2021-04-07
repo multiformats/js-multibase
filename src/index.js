@@ -73,7 +73,6 @@ function decode (data) {
  * Is the given data multibase encoded?
  *
  * @param {Uint8Array|string} data
- * @returns {false | string}
  */
 function isEncoded (data) {
   if (data instanceof Uint8Array) {
