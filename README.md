@@ -1,3 +1,5 @@
+⛔️ DEPRECATED: This module has been superseded by the [multiformats](https://github.com/multiformats/js-multiformats) module <!-- omit in toc -->
+
 js-multibase <!-- omit in toc -->
 ============
 
